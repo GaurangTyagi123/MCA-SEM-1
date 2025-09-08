@@ -1,0 +1,19 @@
+*:  Insertion and deletion.
+
+*: Find the middle node of the linked list.
+
+*: Find the nth node from the last.
+
+*: Reverse the linked list.
+
+*: Find the intersection of the linked list.
+
+*: Delete all occurrences of a given key (Example : Delete all node with 6 as data).
+
+*: Split a linked list into 2 list such that First list must contain the all nodes with even places and Second list must contain all the nodes with odd places.
+
+*: Sum of 2 numbers where digits of each number is stored in nodes of the linked list.
+
+*: Check if linked list has loops.
+
+*: Merge 2 linked list.
