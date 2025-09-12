@@ -43,4 +43,33 @@ public:
     void displayList() const;
 };
 
+template <class T>
+struct DNode
+{
+    T data;
+    DNode<T> *next;
+    DNode<T> *prev;
+};
+
+template <class T>
+class DLinkedList
+{
+private:
+    DNode<T> *head;
+    DNode<T> *tail;
+
+public:
+    DLinkedList();
+    void insertFront(T);
+    void insertEnd(T);
+    void insertAfter(size_t, T);
+
+    void deleteFront();
+    void deleteEnd();
+    void deleteAfter(size_t);
+
+    void displayList();
+    void displayListRev();
+};
+
 #endif

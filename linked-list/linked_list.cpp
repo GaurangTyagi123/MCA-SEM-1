@@ -1,6 +1,5 @@
 #include <iostream>
 #include "linked_list.h"
-#include <cmath>
 using namespace std;
 
 template <class T>
@@ -355,10 +354,11 @@ Node<T> *LinkedList<T>::mergeAlternate(Node<T> *head1, Node<T> *head2)
     {
         curr->next = iter;
     }
-    else{
+    else
+    {
         curr->next = nullptr;
     }
-    
+
     return head1;
 }
 
@@ -482,6 +482,177 @@ void LinkedList<T>::displayList() const
     {
         cout << temp->data << "->";
         temp = temp->next;
+    }
+    cout << endl;
+}
+// Doubly linked list
+
+template <class T>
+DLinkedList<T>::DLinkedList()
+{
+    this->head = nullptr;
+    this->tail = nullptr;
+}
+
+template <class T>
+void DLinkedList<T>::insertFront(T val)
+{
+    DNode<T> *newNode = new DNode<T>();
+    newNode->data = val;
+    if (!this->head)
+    {
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
+        this->head = newNode;
+        this->tail = newNode;
+    }
+    else if (this->head == this->tail)
+    {
+        newNode->next = this->tail;
+        newNode->prev = nullptr;
+        this->head->prev = newNode;
+        this->tail = this->head;
+        this->head = newNode;
+    }
+    else
+    {
+        newNode->next = this->head;
+        newNode->prev = nullptr;
+        this->head->prev = newNode;
+        this->head = newNode;
+    }
+}
+
+template <class T>
+void DLinkedList<T>::insertEnd(T val)
+{
+    DNode<T> *newNode = new DNode<T>();
+    newNode->data = val;
+    if (!this->tail)
+    {
+        newNode->next = nullptr;
+        newNode->prev = nullptr;
+        this->head = newNode;
+        this->tail = newNode;
+    }
+    else if (this->head == this->tail)
+    {
+        newNode->next = nullptr;
+        newNode->prev = this->head;
+        this->tail->next = newNode;
+        this->tail = newNode;
+    }
+    else
+    {
+        newNode->next = nullptr;
+        newNode->prev = this->tail;
+        this->tail->next = newNode;
+        this->tail = newNode;
+    }
+}
+
+template <class T>
+void DLinkedList<T>::insertAfter(size_t index, T val)
+{
+    DNode<T> *iter = this->head;
+    while (index && iter)
+    {
+        iter = iter->next;
+        --index;
+    }
+    DNode<T> *newNode = new DNode<T>();
+    newNode->data = val;
+    newNode->next = iter->next;
+    newNode->prev = iter;
+    iter->next->prev = newNode;
+    iter->next = newNode;
+}
+
+template <class T>
+void DLinkedList<T>::deleteFront()
+{
+    DNode<T> *delNode = this->head;
+    if (!this->head)
+    {
+        return;
+    }
+    else if (this->head == this->tail)
+    {
+        this->head = nullptr;
+        this->tail = nullptr;
+        delete delNode;
+    }
+    else
+    {
+        this->head = delNode->next;
+        this->head->prev = nullptr;
+        delete delNode;
+    }
+}
+template <class T>
+void DLinkedList<T>::deleteEnd()
+{
+    DNode<T> *delNode = this->tail;
+    if (!this->tail)
+    {
+        return;
+    }
+    else if (this->head == this->tail)
+    {
+        this->head = nullptr;
+        this->tail = nullptr;
+        delete delNode;
+    }
+    else
+    {
+        this->tail = delNode->prev;
+        this->tail->next = nullptr;
+        delete delNode;
+    }
+}
+
+template <class T>
+void DLinkedList<T>::deleteAfter(size_t index)
+{
+    DNode<T> *iter = this->head;
+    while (iter && index)
+    {
+        iter = iter->next;
+        --index;
+    }
+    if (iter->next == this->tail)
+    {
+        this->deleteEnd();
+    }
+    else
+    {
+        DNode<T> *delNode = iter->next;
+        iter->next = delNode->next;
+        delNode->next->prev = iter;
+        delete delNode;
+    }
+}
+
+template <class T>
+void DLinkedList<T>::displayList()
+{
+    DNode<T> *iter = this->head;
+    while (iter)
+    {
+        cout << iter->data << " -> ";
+        iter = iter->next;
+    }
+    cout << endl;
+}
+
+template <class T>
+void DLinkedList<T>::displayListRev()
+{
+    DNode<T> *iter = this->tail;
+    while (iter)
+    {
+        cout << iter->data << " -> ";
+        iter = iter->prev;
     }
     cout << endl;
 }
