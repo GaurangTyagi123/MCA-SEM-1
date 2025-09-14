@@ -31,6 +31,7 @@ public:
     LinkedList<T> *splitList();
     bool hasLoops() const;
     T loopNodeVal() const;
+    void odd_even();
 
     Node<T> *getHead();
 
@@ -73,6 +74,7 @@ public:
     void displayListRev();
 };
 
+// . Circular Linked List
 template <class T>
 struct CNode
 {

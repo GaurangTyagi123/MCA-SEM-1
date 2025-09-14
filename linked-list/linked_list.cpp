@@ -361,6 +361,46 @@ Node<T> *LinkedList<T>::mergeAlternate(Node<T> *head1, Node<T> *head2)
 
     return head1;
 }
+template <class T>
+void LinkedList<T>::odd_even()
+{
+    Node<T> *oddHead = nullptr;
+    Node<T> *evenHead = nullptr;
+    Node<T> *odd = nullptr;
+    Node<T> *even = nullptr;
+    Node<T> *iter = this->head;
+
+    while (iter)
+    {
+        bool isEven = !(iter->data % 2);
+        if (isEven && !evenHead)
+        {
+            evenHead = iter;
+            even = iter;
+        }
+        else if (!isEven && !oddHead)
+        {
+            oddHead = iter;
+            odd = iter;
+        }
+        else if (isEven)
+        {
+            even->next = iter;
+            even = iter;
+        }
+        else if (!isEven)
+        {
+            odd->next = iter;
+            odd = iter;
+        }
+        iter = iter->next;
+    }
+    this->head = oddHead;
+    odd->next = evenHead;
+    even->next = nullptr;
+
+    this->displayList();
+}
 
 template <class T>
 Node<T> *LinkedList<T>::getHead()
