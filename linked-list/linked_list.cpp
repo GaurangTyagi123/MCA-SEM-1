@@ -485,7 +485,7 @@ void LinkedList<T>::displayList() const
     }
     cout << endl;
 }
-// Doubly linked list
+// .Doubly linked list
 
 template <class T>
 DLinkedList<T>::DLinkedList()
@@ -654,5 +654,140 @@ void DLinkedList<T>::displayListRev()
         cout << iter->data << " -> ";
         iter = iter->prev;
     }
+    cout << endl;
+}
+// . Circular linked list
+
+template <class T>
+CLinkedList<T>::CLinkedList()
+{
+    this->head = nullptr;
+}
+
+template <class T>
+void CLinkedList<T>::insertFront(T val)
+{
+    CNode<T> *newNode = new CNode<T>();
+    newNode->data = val;
+    if (!this->head)
+    {
+        newNode->next = newNode;
+        this->head = newNode;
+    }
+    else if (this->head->next == this->head)
+    {
+        newNode->next = this->head;
+        this->head->next = newNode;
+        this->head = newNode;
+    }
+    else
+    {
+        newNode->next = this->head;
+        CNode<T> *iter = new CNode<T>();
+        iter = this->head;
+        while (iter->next != this->head)
+        {
+            iter = iter->next;
+        }
+        iter->next = newNode;
+        this->head = newNode;
+    }
+}
+
+template <class T>
+void CLinkedList<T>::insertEnd(T val)
+{
+    CNode<T> *newNode = new CNode<T>();
+    newNode->data = val;
+    if (!this->head)
+    {
+        newNode->next = newNode;
+        this->head = newNode;
+    }
+    else if (this->head == this->head->next)
+    {
+        newNode->next = this->head;
+        this->head->next = newNode;
+    }
+    else
+    {
+        CNode<T> *iter = this->head;
+        while (iter->next != this->head)
+        {
+            iter = iter->next;
+        }
+        newNode->next = this->head;
+        iter->next = newNode;
+    }
+}
+
+template <class T>
+void CLinkedList<T>::insertAfter(size_t index, T val)
+{
+    CNode<T> *newNode = new CNode<T>();
+    newNode->data = val;
+
+    CNode<T> *iter = this->head;
+    while (iter && index)
+    {
+        iter = iter->next;
+        --index;
+    }
+    newNode->next = iter->next;
+    iter->next = newNode;
+}
+
+template <class T>
+void CLinkedList<T>::deleteFront()
+{
+    CNode<T> *delNode = this->head;
+    CNode<T> *iter = this->head;
+
+    while (iter->next != this->head)
+    {
+        iter = iter->next;
+    }
+
+    iter->next = delNode->next;
+    this->head = iter->next;
+    delete delNode;
+}
+
+template <class T>
+void CLinkedList<T>::deleteEnd()
+{
+    CNode<T> *iter = this->head;
+    while (iter->next->next != this->head)
+    {
+        iter = iter->next;
+    }
+    CNode<T> *delNode = iter->next;
+    iter->next = this->head;
+    delete delNode;
+}
+
+template <class T>
+void CLinkedList<T>::deleteAfter(size_t index)
+{
+    CNode<T> *iter = this->head;
+    while (iter && index)
+    {
+        iter = iter->next;
+        --index;
+    }
+    CNode<T> *delNode = iter->next;
+    iter->next = delNode->next;
+    delete delNode;
+}
+
+template <class T>
+void CLinkedList<T>::displayList()
+{
+    CNode<T> *iter = this->head;
+    do
+    {
+        cout << iter->data << " - ";
+        iter = iter->next;
+    } while (iter != this->head);
     cout << endl;
 }

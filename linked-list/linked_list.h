@@ -1,4 +1,5 @@
 #ifndef linked_list_h
+#include <cstddef>
 
 template <class T>
 struct Node
@@ -70,6 +71,32 @@ public:
 
     void displayList();
     void displayListRev();
+};
+
+template <class T>
+struct CNode
+{
+    T data;
+    CNode *next;
+};
+
+template <class T>
+class CLinkedList
+{
+private:
+    CNode<T> *head;
+
+public:
+    CLinkedList();
+    void insertFront(T);
+    void insertEnd(T);
+    void insertAfter(size_t, T);
+
+    void deleteFront();
+    void deleteEnd();
+    void deleteAfter(size_t);
+
+    void displayList();
 };
 
 #endif
