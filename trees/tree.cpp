@@ -16,6 +16,81 @@ BNode<T> *BinaryTree<T>::getRoot()
 }
 
 template <class T>
+int BinaryTree<T>::height(BNode<T> *root)
+{
+    if (root->left || root->right)
+    {
+        return 1 + max(height(root->left), height(root->right));
+    }
+    else
+        return 0;
+}
+template <class T>
+T BinaryTree<T>::sumOfNodes(BNode<T> *root)
+{
+    if (root)
+    {
+        return root->data + sumOfNodes(root->left) + sumOfNodes(root->right);
+    }
+    else
+        return 0;
+}
+template <class T>
+T BinaryTree<T>::maxNode(BNode<T> *root)
+{
+    T r, left, right, max;
+    if (root)
+    {
+        r = root->data;
+        left = maxNode(root->left);
+        right = maxNode(root->right);
+        if (left > right)
+            max = left;
+        else
+            max = right;
+        if (max < r)
+            return r;
+        else
+            return max;
+    }
+    else
+    {
+        return -1;
+    }
+}
+template <class T>
+size_t BinaryTree<T>::NumOfLeaves(BNode<T> *root)
+{
+    size_t leaf = 0;
+    size_t left, right;
+    if (root->left || root->right)
+    {
+        left = NumOfLeaves(root->left);
+        right = NumOfLeaves(root->right);
+        return left + right;
+    }
+    else
+    {
+        return leaf + 1;
+    }
+}
+template <class T>
+BNode<T>* BinaryTree<T>::interchangeSubtrees(BNode<T> *root)
+{
+    BNode<T> *left, *right;
+    if (root->left || root->right)
+    {
+        left = interchangeSubtrees(root->right);
+        right = interchangeSubtrees(root->left);
+        root->left = left;
+        root->right = right;
+    }
+    else{
+        return root;
+    }
+}
+
+template <class T>
 void BinaryTree<T>::InsertNode(T val)
 {
     BNode<T> *newNode = new BNode<T>();
@@ -43,7 +118,7 @@ void BinaryTree<T>::InsertNode(T val)
             {
                 q.push(temp->left);
             }
-            if(!temp->right)
+            if (!temp->right)
             {
                 temp->right = newNode;
                 return;

@@ -1,5 +1,6 @@
 #ifndef TREE_H
 #define TREE_H
+#include <cstddef>
 
 template <class T>
 struct BNode
@@ -18,6 +19,12 @@ private:
 public:
     BinaryTree();
     BNode<T> *getRoot();
+    int height(BNode<T> *);
+    T sumOfNodes(BNode<T> *);
+    T maxNode(BNode<T> *);
+    size_t NumOfLeaves(BNode<T> *);
+    BNode<T> * interchangeSubtrees(BNode<T> *);
+
     void InsertNode(T);
 
     void inorder(BNode<T> *);
