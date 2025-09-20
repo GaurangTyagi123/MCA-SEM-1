@@ -1,0 +1,314 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "use School_DB;\nCREATE TABLE Students (\n   StudentID INT PRIMARY KEY,\n   Name VARCHAR(50),\n   Age INT,\n   Department VARCHAR(50),\n   Marks INT\n);\nINSERT INTO Students (StudentID, Name, Age, Department, Marks) VALUES\n(1, 'Rahul Sharma', 20, 'Computer Science', 85),\n(2, 'Sneha Verma', 21, 'Mathematics', 90),\n(3, 'Aman Gupta', 22, 'Physics', 78),\n(4, 'Priya Singh', 20, 'Chemistry', 88),\n(5, 'Karan Mehta', 23, 'Computer Science', 92);\n\nSELECT * FROM Students;\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 17,
+                    "column": 1
+                },
+                "position": {
+                    "lineNumber": 17,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 1,
+                "column": 1
+            },
+            "firstPositionDeltaTop": -7
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 15,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "a7d0aeb9-95fc-4d69-c9bb-57907d121dc0",
+                            "content": "OK, 0 records retrieved in 0.443ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 1,
+                            "resultId": "041f9492-56e6-4d4d-a33c-2873103c50a3",
+                            "content": "OK, 0 records retrieved in 27.252ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 2,
+                            "resultId": "f66cbd94-fc4f-42ea-9345-9d4e9e0d9022",
+                            "content": "OK, 5 rows affected in 7.568ms"
+                        }
+                    ]
+                },
+                "currentHeight": 63.1875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 14
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 14,
+                            "length": 130
+                        },
+                        "contentStart": 15,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 144,
+                            "length": 289
+                        },
+                        "contentStart": 145,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 433,
+                            "length": 1
+                        },
+                        "contentStart": 432,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 16,
+                "end": 16,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "0417633a-598d-4b4f-8e24-28c42d572e9d"
+                    ]
+                },
+                "currentHeight": 186,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 23
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "47a10a82-0b4a-492e-a206-c8889b958425",
+                    "resultId": "0417633a-598d-4b4f-8e24-28c42d572e9d",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Rahul Sharma",
+                            "2": 20,
+                            "3": "Computer Science",
+                            "4": 85
+                        },
+                        {
+                            "0": 2,
+                            "1": "Sneha Verma",
+                            "2": 21,
+                            "3": "Mathematics",
+                            "4": 90
+                        },
+                        {
+                            "0": 3,
+                            "1": "Aman Gupta",
+                            "2": 22,
+                            "3": "Physics",
+                            "4": 78
+                        },
+                        {
+                            "0": 4,
+                            "1": "Priya Singh",
+                            "2": 20,
+                            "3": "Chemistry",
+                            "4": 88
+                        },
+                        {
+                            "0": 5,
+                            "1": "Karan Mehta",
+                            "2": 23,
+                            "3": "Computer Science",
+                            "4": 92
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "StudentID",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Age",
+                            "field": "2",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Department",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "Marks",
+                            "field": "4",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 5 records retrieved in 0.633ms"
+                    },
+                    "totalRowCount": 5,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT * FROM Students",
+                    "updatable": true,
+                    "fullTableName": "Students"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 17,
+                "end": 17,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}

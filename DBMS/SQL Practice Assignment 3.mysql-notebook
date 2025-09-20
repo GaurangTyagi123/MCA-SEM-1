@@ -1,0 +1,1388 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "SHOW DATABASES;\r\nuse school_db\r\n\r\nCREATE TABLE employees(empid INT PRIMARY KEY,\r\nname VARCHAR(50),\r\ndepartment VARCHAR(10),\r\nsalary INT CHECK(salary<100000),\r\njoiningdate DATE\r\n);\r\nDESC employees;\r\n\r\nINSERT INTO employees values \r\n(1,\"Amit\",\"HR\",45000,\"2020-01-15\"),\r\n(2,\"NEHA\",\"IT\",60000,\"2019-03-10\"),\r\n(3,\"Ravi\",\"Finance\",55000,\"2021-07-22\"),\r\n(4,\"Simran\",\"IT\",70000,\"2018-11-01\"),\r\n(5,\"Raj\",\"Finance\",50000,\"2020-06-18\"),\r\n(6,\"Priya\",\"HR\",48000,\"2021-02-25\");SELECT* FROM employees\r\n\r\n/* All the employees who work in the IT department */\r\nSELECT * FROM employees where department = \"IT\";\r\n/* employees with salary greater than 55000 */\r\nSELECT * FROM employees where salary > 55000;\r\n/* names of the employees who joined after 2020-01-01 */\r\nSELECT name from employees WHERE joiningdate > \"2020-01-01\";\r\n/* average salary of employees in each department */\r\nSELECT name,AVG(salary) as \"average_salary\" from employees GROUP BY department;\r\n/* highest salary in finance department */\r\nSELECT name,max(salary) from employees GROUP BY department having MAX(salary) and department = \"Finance\";\r\n/* number of employees in each department */\r\nSELECT department, COUNT(*) as \"#of employees\" from employees GROUP BY department;\r\n/* order employees by their salary in descending order */\r\nSELECT * FROM employees ORDER BY salary DESC;\r\n/* departments having more than two employees */\r\nSELECT department, COUNT(*) as \"#employees\" FROM employees GROUP BY department having COUNT(*) > 2;\r\n/* total salary expenditure of the IT department */\r\nSELECT department, SUM(salary) as \"Salary_Expenditure\"  FROM employees GROUP BY department having department = \"IT\";\r\n/* employees whose names start with the letter R*/\r\nSELECT * FROM employees WHERE name LIKE \"R%\";\r\n",
+    "options": {},
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 37,
+                    "column": 117
+                },
+                "position": {
+                    "lineNumber": 37,
+                    "column": 117
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 32,
+                "column": 1
+            },
+            "firstPositionDeltaTop": -7
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "f7e7830e-d78c-4cf6-8ba0-ebb2e5c17564"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 15
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "f7e7830e-d78c-4cf6-8ba0-ebb2e5c17564",
+                    "rows": [
+                        {
+                            "0": "b'employee'"
+                        },
+                        {
+                            "0": "chat_app"
+                        },
+                        {
+                            "0": "college"
+                        },
+                        {
+                            "0": "echo"
+                        },
+                        {
+                            "0": "gaurang"
+                        },
+                        {
+                            "0": "information_schema"
+                        },
+                        {
+                            "0": "laravel"
+                        },
+                        {
+                            "0": "mysql"
+                        },
+                        {
+                            "0": "performance_schema"
+                        },
+                        {
+                            "0": "sakila"
+                        },
+                        {
+                            "0": "school_db"
+                        },
+                        {
+                            "0": "sys"
+                        },
+                        {
+                            "0": "world"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Database",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 13 records retrieved in 2.819ms"
+                    },
+                    "totalRowCount": 13,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SHOW DATABASES",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 3,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "38264e92-2650-43b1-f8a8-3da0f3ffce33",
+                            "content": "OK, 0 records retrieved in 0.711ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 14
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 4,
+                "end": 11,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 140
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 140,
+                            "length": 4
+                        },
+                        "contentStart": 140,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 144,
+                            "length": 1
+                        },
+                        "contentStart": 144,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 145,
+                            "length": 12
+                        },
+                        "contentStart": 146,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 12,
+                "end": 19,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 257
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 257,
+                            "length": 17
+                        },
+                        "contentStart": 257,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 20,
+                "end": 21,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "ee5a77f0-c513-456d-985b-a37636226049"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 102
+                        },
+                        "contentStart": 54,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "ee5a77f0-c513-456d-985b-a37636226049",
+                    "rows": [
+                        {
+                            "0": 2,
+                            "1": "NEHA",
+                            "2": "IT",
+                            "3": 60000,
+                            "4": "2019-03-10"
+                        },
+                        {
+                            "0": 4,
+                            "1": "Simran",
+                            "2": "IT",
+                            "3": 70000,
+                            "4": "2018-11-01"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "empid",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "department",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "salary",
+                            "field": "3",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "joiningdate",
+                            "field": "4",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 2 records retrieved in 0.78ms"
+                    },
+                    "totalRowCount": 2,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* All the employees who work in the IT department */\nSELECT * FROM employees where department = \"IT\";",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 22,
+                "end": 23,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "8b48df2c-94fc-4f94-f089-4ff4fc62d79f"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 92
+                        },
+                        "contentStart": 47,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "8b48df2c-94fc-4f94-f089-4ff4fc62d79f",
+                    "rows": [
+                        {
+                            "0": 2,
+                            "1": "NEHA",
+                            "2": "IT",
+                            "3": 60000,
+                            "4": "2019-03-10"
+                        },
+                        {
+                            "0": 4,
+                            "1": "Simran",
+                            "2": "IT",
+                            "3": 70000,
+                            "4": "2018-11-01"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "empid",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "department",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "salary",
+                            "field": "3",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "joiningdate",
+                            "field": "4",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 2 records retrieved in 0.927ms"
+                    },
+                    "totalRowCount": 2,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* employees with salary greater than 55000 */\nSELECT * FROM employees where salary > 55000;",
+                    "updatable": true,
+                    "fullTableName": "employees"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 24,
+                "end": 25,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "9a316119-d58b-4893-c86c-bd761275be28"
+                    ]
+                },
+                "currentHeight": 162.1999969482422,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 117
+                        },
+                        "contentStart": 57,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "9a316119-d58b-4893-c86c-bd761275be28",
+                    "rows": [
+                        {
+                            "0": "Amit"
+                        },
+                        {
+                            "0": "Ravi"
+                        },
+                        {
+                            "0": "Raj"
+                        },
+                        {
+                            "0": "Priya"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "name",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 4 records retrieved in 1.608ms"
+                    },
+                    "totalRowCount": 4,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* names of the employees who joined after 2020-01-01 */\nSELECT name from employees WHERE joiningdate > \"2020-01-01\";",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 26,
+                "end": 27,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "f4bfcd8e-88fa-40ab-f3a6-3e612310eca1"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 132
+                        },
+                        "contentStart": 53,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "f4bfcd8e-88fa-40ab-f3a6-3e612310eca1",
+                    "rows": [
+                        {
+                            "0": "Amit",
+                            "1": "46500.0000"
+                        },
+                        {
+                            "0": "NEHA",
+                            "1": "65000.0000"
+                        },
+                        {
+                            "0": "Ravi",
+                            "1": "52500.0000"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "name",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "average_salary",
+                            "field": "1",
+                            "dataType": {
+                                "type": 10,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 65,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FIXED",
+                                    "NUMERIC",
+                                    "DEC"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 3 records retrieved in 3.572ms"
+                    },
+                    "totalRowCount": 3,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* average salary of employees in each department */\nSELECT name,AVG(salary) as \"average_salary\" from employees GROUP BY department;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 28,
+                "end": 29,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "f432ac45-84a0-479d-9180-bce326924464"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 148
+                        },
+                        "contentStart": 43,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "f432ac45-84a0-479d-9180-bce326924464",
+                    "rows": [
+                        {
+                            "0": "Ravi",
+                            "1": 55000
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "name",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "max(salary)",
+                            "field": "1",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 1 record retrieved in 2.394ms"
+                    },
+                    "totalRowCount": 1,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* highest salary in finance department */\nSELECT name,max(salary) from employees GROUP BY department having MAX(salary) and department = \"Finance\";",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 30,
+                "end": 31,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "23818a5a-2b16-44e9-8386-053b1ed56f97"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 127
+                        },
+                        "contentStart": 45,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "23818a5a-2b16-44e9-8386-053b1ed56f97",
+                    "rows": [
+                        {
+                            "0": "HR",
+                            "1": 2
+                        },
+                        {
+                            "0": "IT",
+                            "1": 2
+                        },
+                        {
+                            "0": "Finance",
+                            "1": 2
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "department",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "#of employees",
+                            "field": "1",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 3 records retrieved in 0.538ms"
+                    },
+                    "totalRowCount": 3,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* number of employees in each department */\nSELECT department, COUNT(*) as \"#of employees\" from employees GROUP BY department;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 32,
+                "end": 33,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "0e92544b-e2dc-4db5-af83-fd1230146861"
+                    ]
+                },
+                "currentHeight": 209.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 103
+                        },
+                        "contentStart": 58,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "0e92544b-e2dc-4db5-af83-fd1230146861",
+                    "rows": [
+                        {
+                            "0": 4,
+                            "1": "Simran",
+                            "2": "IT",
+                            "3": 70000,
+                            "4": "2018-11-01"
+                        },
+                        {
+                            "0": 2,
+                            "1": "NEHA",
+                            "2": "IT",
+                            "3": 60000,
+                            "4": "2019-03-10"
+                        },
+                        {
+                            "0": 3,
+                            "1": "Ravi",
+                            "2": "Finance",
+                            "3": 55000,
+                            "4": "2021-07-22"
+                        },
+                        {
+                            "0": 5,
+                            "1": "Raj",
+                            "2": "Finance",
+                            "3": 50000,
+                            "4": "2020-06-18"
+                        },
+                        {
+                            "0": 6,
+                            "1": "Priya",
+                            "2": "HR",
+                            "3": 48000,
+                            "4": "2021-02-25"
+                        },
+                        {
+                            "0": 1,
+                            "1": "Amit",
+                            "2": "HR",
+                            "3": 45000,
+                            "4": "2020-01-15"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "empid",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "department",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "salary",
+                            "field": "3",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "joiningdate",
+                            "field": "4",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 6 records retrieved in 0.846ms"
+                    },
+                    "totalRowCount": 6,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* order employees by their salary in descending order */\nSELECT * FROM employees ORDER BY salary DESC;",
+                    "updatable": true,
+                    "fullTableName": "employees"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 34,
+                "end": 35,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "e9c745ce-c246-4aa8-fb70-be5c8e9cdf63"
+                    ]
+                },
+                "currentHeight": 85.390625,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 148
+                        },
+                        "contentStart": 49,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "e9c745ce-c246-4aa8-fb70-be5c8e9cdf63",
+                    "rows": [],
+                    "columns": [
+                        {
+                            "title": "*",
+                            "field": "0",
+                            "dataType": {
+                                "type": 0
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 0 records retrieved in 0.845ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* departments having more than two employees */\nSELECT department, COUNT(*) as \"#employees\" FROM employees GROUP BY department having COUNT(*) > 2;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 36,
+                "end": 37,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "b2338688-216e-463c-c0d6-b132cc229bd7"
+                    ]
+                },
+                "currentHeight": 90.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 169
+                        },
+                        "contentStart": 52,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "b2338688-216e-463c-c0d6-b132cc229bd7",
+                    "rows": [
+                        {
+                            "0": "IT",
+                            "1": "130000"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "department",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Salary_Expenditure",
+                            "field": "1",
+                            "dataType": {
+                                "type": 10,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 65,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FIXED",
+                                    "NUMERIC",
+                                    "DEC"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 1 record retrieved in 0.994ms"
+                    },
+                    "totalRowCount": 1,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT department, SUM(salary) as \"Salary_Expenditure\"  FROM employees GROUP BY department having department = \"IT\"",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 38,
+                "end": 39,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "bd147871-0dd6-4ef1-baef-a80c0f45a197"
+                    ]
+                },
+                "currentHeight": 114.59375,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 97
+                        },
+                        "contentStart": 51,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
+                    "resultId": "bd147871-0dd6-4ef1-baef-a80c0f45a197",
+                    "rows": [
+                        {
+                            "0": 3,
+                            "1": "Ravi",
+                            "2": "Finance",
+                            "3": 55000,
+                            "4": "2021-07-22"
+                        },
+                        {
+                            "0": 5,
+                            "1": "Raj",
+                            "2": "Finance",
+                            "3": 50000,
+                            "4": "2020-06-18"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "empid",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "department",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "salary",
+                            "field": "3",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "joiningdate",
+                            "field": "4",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 2 records retrieved in 1.38ms"
+                    },
+                    "totalRowCount": 2,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT * FROM employees WHERE name LIKE \"R%\"",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 40,
+                "end": 40,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}

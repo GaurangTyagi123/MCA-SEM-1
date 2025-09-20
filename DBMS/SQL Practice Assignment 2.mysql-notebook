@@ -1,0 +1,590 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\nCREATE DATABASE IF NOT EXISTS School_DB ;\nuse School_DB;\nCREATE TABLE IF NOT EXISTS Students(\n    student_id int PRIMARY KEY,\n    name varchar(50),\n    age int,\n    grade varchar(10)\n);\nSHOW TABLES;\n\nINSERT INTO Students VALUES(\n    1,\n    \"Alice\",\n    14,\n    \"8th\"\n);\nINSERT INTO Students VALUES(\n    2,\n    \"Bob\",\n    15,\n    \"9th\"\n);\nINSERT INTO Students VALUES(\n    3,\n    \"Charlie\",\n    13,\n    \"7th\"\n);\nINSERT INTO Students VALUES(\n    4,\n    \"David\",\n    14,\n    \"8th\"\n);\nINSERT INTO Students VALUES(\n    5,\n    \"Eva\",\n    15,\n    \"9th\"\n);\nINSERT INTO Students VALUES(\n    6,\n    \"Frank\",\n    16,\n    \"10th\"\n);\nINSERT INTO Students VALUES(\n    7,\n    \"Grace\",\n    12,\n    \"6th\"\n);\nINSERT INTO Students VALUES(\n    8,\n    \"Helen\",\n    14,\n    \"8th\"\n);\nSELECT * FROM Students;\nSELECT name,grade from Students;\nSELECT * from Students WHERE age>14;\nSELECT * from Students WHERE grade=\"8th\";\nUPDATE Students set age=15 WHERE name=\"Alice\";\nDELETE FROM Students where id=3;\nSELECT * FROM Students;\nDROP TABLE Students;\nSHOW TABLES;\n",
+    "options": {
+        "tabSize": 4,
+        "insertSpaces": true,
+        "indentSize": 4,
+        "defaultEOL": "CRLF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 69,
+                    "column": 1
+                },
+                "position": {
+                    "lineNumber": 69,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 61,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 82
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 10,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 41
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 41,
+                            "length": 15
+                        },
+                        "contentStart": 42,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 56,
+                            "length": 129
+                        },
+                        "contentStart": 57,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 185,
+                            "length": 13
+                        },
+                        "contentStart": 186,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 198,
+                            "length": 1
+                        },
+                        "contentStart": 197,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 11,
+                "end": 59,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "fd47ef54-c870-4808-90fc-332e9ab497c7",
+                            "content": "OK, 1 row affected in 7.076ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 1,
+                            "resultId": "b91661b3-8042-4f96-ccb9-fd69128a7de0",
+                            "content": "OK, 1 row affected in 2.59ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 2,
+                            "resultId": "e9b15e89-e9d8-470f-9779-6275c972257f",
+                            "content": "OK, 1 row affected in 2.017ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 3,
+                            "resultId": "bc4e1549-3e28-4dd7-992c-f42dadde97aa",
+                            "content": "OK, 1 row affected in 1.95ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 4,
+                            "resultId": "e8dc7a57-66f6-432e-f461-889e5f995092",
+                            "content": "OK, 1 row affected in 1.887ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 5,
+                            "resultId": "094eea31-d521-4e3c-b718-5a0f42c9ce8e",
+                            "content": "OK, 1 row affected in 1.703ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 6,
+                            "resultId": "d0c9ad5d-e873-4458-f575-11309529db69",
+                            "content": "OK, 1 row affected in 5.937ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 7,
+                            "resultId": "c6c83ea7-f699-4a50-984f-47021b01da8d",
+                            "content": "OK, 1 row affected in 2.068ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 70
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 70,
+                            "length": 68
+                        },
+                        "contentStart": 71,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 138,
+                            "length": 72
+                        },
+                        "contentStart": 139,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 210,
+                            "length": 70
+                        },
+                        "contentStart": 211,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 280,
+                            "length": 68
+                        },
+                        "contentStart": 281,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 348,
+                            "length": 71
+                        },
+                        "contentStart": 349,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 419,
+                            "length": 70
+                        },
+                        "contentStart": 420,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 489,
+                            "length": 70
+                        },
+                        "contentStart": 490,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 559,
+                            "length": 1
+                        },
+                        "contentStart": 558,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 60,
+                "end": 60,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "939dc802-48dc-42b5-8700-376a3b1c9f8e"
+                    ]
+                },
+                "currentHeight": 257.390625,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 23
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 23,
+                            "length": 0
+                        },
+                        "contentStart": 23,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "e3ec0152-d45e-4e5a-ade6-8facda1855df",
+                    "resultId": "939dc802-48dc-42b5-8700-376a3b1c9f8e",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Alice",
+                            "2": 14,
+                            "3": "8th"
+                        },
+                        {
+                            "0": 2,
+                            "1": "Bob",
+                            "2": 15,
+                            "3": "9th"
+                        },
+                        {
+                            "0": 3,
+                            "1": "Charlie",
+                            "2": 13,
+                            "3": "7th"
+                        },
+                        {
+                            "0": 4,
+                            "1": "David",
+                            "2": 14,
+                            "3": "8th"
+                        },
+                        {
+                            "0": 5,
+                            "1": "Eva",
+                            "2": 15,
+                            "3": "9th"
+                        },
+                        {
+                            "0": 6,
+                            "1": "Frank",
+                            "2": 16,
+                            "3": "10th"
+                        },
+                        {
+                            "0": 7,
+                            "1": "Grace",
+                            "2": 12,
+                            "3": "6th"
+                        },
+                        {
+                            "0": 8,
+                            "1": "Helen",
+                            "2": 14,
+                            "3": "8th"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "student_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "age",
+                            "field": "2",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "grade",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 8 records retrieved in 0.848ms"
+                    },
+                    "totalRowCount": 8,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT * FROM Students",
+                    "updatable": true,
+                    "fullTableName": "Students"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 61,
+                "end": 66,
+                "language": "mysql",
+                "currentHeight": 284.390625,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 32
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 32,
+                            "length": 37
+                        },
+                        "contentStart": 33,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 69,
+                            "length": 42
+                        },
+                        "contentStart": 70,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 111,
+                            "length": 47
+                        },
+                        "contentStart": 112,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 158,
+                            "length": 33
+                        },
+                        "contentStart": 160,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 191,
+                            "length": 24
+                        },
+                        "contentStart": 192,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 67,
+                "end": 68,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "8eb786d0-0986-4910-ae62-9a6aa70557d9",
+                            "content": "OK, 0 records retrieved in 21.978ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 1,
+                            "resultId": "cf3757fd-acd7-41fb-9dc4-66c1aaaf3c9c",
+                            "content": "OK, 0 records retrieved in 3.164ms"
+                        }
+                    ]
+                },
+                "currentHeight": 44.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 20
+                        },
+                        "contentStart": 1,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 20,
+                            "length": 13
+                        },
+                        "contentStart": 21,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 69,
+                "end": 69,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}

@@ -1,0 +1,1287 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "use school_db;\r\nshow TABLES\r\nCREATE TABLE IF NOT EXISTS Departments(\r\nDepartmentID int PRIMARY KEY AUTO_INCREMENT,\r\nDepartmentName VARCHAR(50)\r\n);\r\nCREATE TABLE IF NOT EXISTS Students(\r\nStudentID int PRIMARY KEY AUTO_INCREMENT,\r\nName varchar(50),\r\nAge INT,\r\nDepartment INT,\r\nFOREIGN KEY Students(Department) REFERENCES Departments(DepartmentID)\r\n)\r\n\r\nCREATE TABLE IF NOT EXISTS Marks(\r\nMarksID INT PRIMARY KEY AUTO_INCREMENT,\r\nStudentID INT,\r\nSubject VARCHAR(5),\r\nMarks INT,\r\nFOREIGN KEY Marks(StudentID) REFERENCES Students(StudentID)\r\n);\r\n\r\nINSERT INTO Departments(DepartmentID,DepartmentName) VALUES\r\n(1,\"Computer Science\"),\r\n(2,\"Mathematics\"),\r\n(3,\"Physics\");\r\nINSERT INTO Students(StudentID,Name,Age,Department) VALUES\r\n(1,\"Amit\",20,1),\r\n(2,\"Riya\",22,2),\r\n(3,\"Karan\",21,1),\r\n(4,\"Neha\",23,3),\r\n(5,\"Arjun\",20,2);\r\nINSERT INTO marks(MarksID,StudentID,Subject,Marks) VALUES\r\n(1,1,\"DBMS\",85),\r\n(2,1,\"AI\",90),\r\n(3,2,\"DBMS\",75),\r\n(4,2,\"AI\",80),\r\n(5,3,\"DBMS\",88),\r\n(6,4,\"AI\",92),\r\n(7,5,\"DBMS\",70);\r\n/* Retrieve all students along with their department names */\r\nSELECT name,DepartmentName from students,departments where students.department - departments.DepartmentID;\r\n/* Find the average marks obtained by each student. */\r\nSELECT AVG(m.marks) \"AVG_MARKS\",s.name FROM students s JOIN marks m on m.StudentID = s.StudentID GROUP BY s.StudentID;\r\n/* Find the maximum marks in each subject */\r\nSELECT m.Subject,max(m.marks) from Marks m GROUP BY m.Subject;\r\n/* List students who scored more than 80 in all subject */\r\nSELECT s.name from students s JOIN marks m ON s.StudentID = m.StudentID GROUP BY m.StudentID having MIN(m.marks) >= 80;\r\n/* Retrieve all students ordered by their average marks in descending order. */\r\nSELECT s.name,AVG(m.marks) as \"AVG_MARKS\" FROM students s LEFT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID ORDER BY AVG_MARKS;\r\n/* Find the total marks scored by students in each department. */\r\nSELECT d.DepartmentName,sum(m.marks) as TOTAL FROM Marks m JOIN Students s ON m.StudentID = s.StudentID JOIN Departments d ON s.Department = d.DepartmentID GROUP BY d.DepartmentID;\r\n/* Display students who have not received any marks yet. */\r\nSELECT s.name FROM students s WHERE s.StudentID not in ( SELECT StudentID from students );\r\n/* Retrieve department names along with the number of students enrolled in each\r\ndepartment. */\r\nSELECT d.DepartmentName, count(*) as NUM_OF_STUDENTS FROM departments d JOIN students s ON d.DepartmentID = s.Department GROUP BY d.DepartmentID;\r\n/* . Find the student with the highest marks in AI subject. */\r\nSELECT Subject,max(Marks) FROM Marks WHERE Subject = \"AI\"  GROUP BY Subject;\r\n/* Display all students along with their average marks (if any), showing 0 where marks are\r\nnot available. */\r\nSELECT s.name,COALESCE(AVG(m.marks),0) as AVG FROM students s RIGHT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID;\r\n",
+    "options": {},
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 63,
+                    "column": 1
+                },
+                "position": {
+                    "lineNumber": 63,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 55,
+                "column": 1
+            },
+            "firstPositionDeltaTop": 4
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "73a6b4d8-4a29-438b-90b0-04126cb8b29e",
+                            "content": "OK, 0 records retrieved in 0.441ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 14
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 2,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "df8b25c8-99f9-4dd0-b19e-19f888d122a2"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 11
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "df8b25c8-99f9-4dd0-b19e-19f888d122a2",
+                    "rows": [
+                        {
+                            "0": "departments"
+                        },
+                        {
+                            "0": "employees"
+                        },
+                        {
+                            "0": "marks"
+                        },
+                        {
+                            "0": "students"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Tables_in_school_db",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 4 records retrieved in 3.129ms"
+                    },
+                    "totalRowCount": 4,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "show TABLES",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 3,
+                "end": 6,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "5cc6d2bf-7136-4904-f680-18868b82d085",
+                            "content": "OK, 0 records retrieved in 5.383ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 114
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 7,
+                "end": 14,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "0582f205-e1bd-4aef-e9a4-0390f2f64243",
+                            "content": "OK, 0 records retrieved in 2.415ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 194
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 15,
+                "end": 22,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "34f2cc86-788a-4962-cb73-454f124f3915",
+                            "content": "OK, 0 records retrieved in 2.058ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 183
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 23,
+                "end": 26,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1062): Duplicate entry '1' for key 'departments.PRIMARY'",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 117
+                        },
+                        "contentStart": 0,
+                        "state": 2
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 27,
+                "end": 32,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "486acf44-da41-475b-e8af-8ef2a80e486d",
+                            "content": "OK, 5 rows affected in 5.882ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 145
+                        },
+                        "contentStart": 0,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 33,
+                "end": 40,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "index": 0,
+                            "resultId": "287e9eff-4e80-4a82-836f-69426db85995",
+                            "content": "OK, 7 rows affected in 3.427ms"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 170
+                        },
+                        "contentStart": 0,
+                        "state": 2
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 41,
+                "end": 42,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "ba2f9267-cddf-4786-cde3-cc0c1886b125"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 168
+                        },
+                        "contentStart": 62,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "ba2f9267-cddf-4786-cde3-cc0c1886b125",
+                    "rows": [
+                        {
+                            "0": "Amit",
+                            "1": "Physics"
+                        },
+                        {
+                            "0": "Amit",
+                            "1": "Mathematics"
+                        },
+                        {
+                            "0": "Riya",
+                            "1": "Physics"
+                        },
+                        {
+                            "0": "Riya",
+                            "1": "Computer Science"
+                        },
+                        {
+                            "0": "Karan",
+                            "1": "Physics"
+                        },
+                        {
+                            "0": "Karan",
+                            "1": "Mathematics"
+                        },
+                        {
+                            "0": "Neha",
+                            "1": "Mathematics"
+                        },
+                        {
+                            "0": "Neha",
+                            "1": "Computer Science"
+                        },
+                        {
+                            "0": "Arjun",
+                            "1": "Physics"
+                        },
+                        {
+                            "0": "Arjun",
+                            "1": "Computer Science"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "name",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "DepartmentName",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 10 records retrieved in 1.6ms"
+                    },
+                    "totalRowCount": 10,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* Retrieve all students along with their department names */\nSELECT name,DepartmentName from students,departments where students.department - departments.DepartmentID;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 43,
+                "end": 44,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "2c0c66b8-a2f9-49ed-c270-72c08d94c7a2"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 173
+                        },
+                        "contentStart": 55,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "2c0c66b8-a2f9-49ed-c270-72c08d94c7a2",
+                    "rows": [
+                        {
+                            "0": "87.5000",
+                            "1": "Amit"
+                        },
+                        {
+                            "0": "77.5000",
+                            "1": "Riya"
+                        },
+                        {
+                            "0": "88.0000",
+                            "1": "Karan"
+                        },
+                        {
+                            "0": "92.0000",
+                            "1": "Neha"
+                        },
+                        {
+                            "0": "70.0000",
+                            "1": "Arjun"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "AVG_MARKS",
+                            "field": "0",
+                            "dataType": {
+                                "type": 10,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 65,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FIXED",
+                                    "NUMERIC",
+                                    "DEC"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 5 records retrieved in 1.027ms"
+                    },
+                    "totalRowCount": 5,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* Find the average marks obtained by each student. */\nSELECT AVG(m.marks) \"AVG_MARKS\",s.name FROM students s JOIN marks m on m.StudentID = s.StudentID GROUP BY s.StudentID;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 45,
+                "end": 46,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "df7e8b68-cc49-45d2-cbf9-c6af59c3b7f8"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 107
+                        },
+                        "contentStart": 45,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "df7e8b68-cc49-45d2-cbf9-c6af59c3b7f8",
+                    "rows": [
+                        {
+                            "0": "DBMS",
+                            "1": 88
+                        },
+                        {
+                            "0": "AI",
+                            "1": 92
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Subject",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "max(m.marks)",
+                            "field": "1",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 2 records retrieved in 0.856ms"
+                    },
+                    "totalRowCount": 2,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* Find the maximum marks in each subject */\nSELECT m.Subject,max(m.marks) from Marks m GROUP BY m.Subject;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 47,
+                "end": 48,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "476aa107-14e3-4ac1-bd20-be462746a1ea"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 178
+                        },
+                        "contentStart": 59,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "476aa107-14e3-4ac1-bd20-be462746a1ea",
+                    "rows": [
+                        {
+                            "0": "Amit"
+                        },
+                        {
+                            "0": "Karan"
+                        },
+                        {
+                            "0": "Neha"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "name",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 3 records retrieved in 0.99ms"
+                    },
+                    "totalRowCount": 3,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* List students who scored more than 80 in all subject */\nSELECT s.name from students s JOIN marks m ON s.StudentID = m.StudentID GROUP BY m.StudentID having MIN(m.marks) >= 80;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 49,
+                "end": 50,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "18d85561-425e-4a88-de63-c3d6ea183ded"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 225
+                        },
+                        "contentStart": 80,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "18d85561-425e-4a88-de63-c3d6ea183ded",
+                    "rows": [
+                        {
+                            "0": "Arjun",
+                            "1": "70.0000"
+                        },
+                        {
+                            "0": "Riya",
+                            "1": "77.5000"
+                        },
+                        {
+                            "0": "Amit",
+                            "1": "87.5000"
+                        },
+                        {
+                            "0": "Karan",
+                            "1": "88.0000"
+                        },
+                        {
+                            "0": "Neha",
+                            "1": "92.0000"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "name",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "AVG_MARKS",
+                            "field": "1",
+                            "dataType": {
+                                "type": 10,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 65,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FIXED",
+                                    "NUMERIC",
+                                    "DEC"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 5 records retrieved in 1.583ms"
+                    },
+                    "totalRowCount": 5,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* Retrieve all students ordered by their average marks in descending order. */\nSELECT s.name,AVG(m.marks) as \"AVG_MARKS\" FROM students s LEFT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID ORDER BY AVG_MARKS;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 51,
+                "end": 52,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "9b79e7c8-6118-4d23-90ea-69061e231ff3"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 246
+                        },
+                        "contentStart": 66,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "9b79e7c8-6118-4d23-90ea-69061e231ff3",
+                    "rows": [
+                        {
+                            "0": "Computer Science",
+                            "1": "263"
+                        },
+                        {
+                            "0": "Mathematics",
+                            "1": "225"
+                        },
+                        {
+                            "0": "Physics",
+                            "1": "92"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "DepartmentName",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "TOTAL",
+                            "field": "1",
+                            "dataType": {
+                                "type": 10,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 65,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FIXED",
+                                    "NUMERIC",
+                                    "DEC"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 3 records retrieved in 0.778ms"
+                    },
+                    "totalRowCount": 3,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* Find the total marks scored by students in each department. */\nSELECT d.DepartmentName,sum(m.marks) as TOTAL FROM Marks m JOIN Students s ON m.StudentID = s.StudentID JOIN Departments d ON s.Department = d.DepartmentID GROUP BY d.DepartmentID;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 53,
+                "end": 54,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "531e01b9-8588-4646-b187-e0886368b8e3"
+                    ]
+                },
+                "currentHeight": 76.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 150
+                        },
+                        "contentStart": 60,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "531e01b9-8588-4646-b187-e0886368b8e3",
+                    "rows": [],
+                    "executionInfo": {
+                        "text": "OK, 0 records retrieved in 1.951ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* Display students who have not received any marks yet. */\nSELECT s.name FROM students s WHERE s.StudentID not in ( SELECT StudentID from students );",
+                    "updatable": true,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 55,
+                "end": 57,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "d8f7a868-1f40-4605-90fc-41c73d00d865"
+                    ]
+                },
+                "currentHeight": 138.390625,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 240
+                        },
+                        "contentStart": 95,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "d8f7a868-1f40-4605-90fc-41c73d00d865",
+                    "rows": [
+                        {
+                            "0": "Computer Science",
+                            "1": 2
+                        },
+                        {
+                            "0": "Mathematics",
+                            "1": 2
+                        },
+                        {
+                            "0": "Physics",
+                            "1": 1
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "DepartmentName",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "NUM_OF_STUDENTS",
+                            "field": "1",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 3 records retrieved in 1.107ms"
+                    },
+                    "totalRowCount": 3,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* Retrieve department names along with the number of students enrolled in each\ndepartment. */\nSELECT d.DepartmentName, count(*) as NUM_OF_STUDENTS FROM departments d JOIN students s ON d.DepartmentID = s.Department GROUP BY d.DepartmentID;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 58,
+                "end": 59,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "2d07c890-56bd-4cef-a184-a0b2982302f1"
+                    ]
+                },
+                "currentHeight": 90.796875,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 139
+                        },
+                        "contentStart": 63,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "2d07c890-56bd-4cef-a184-a0b2982302f1",
+                    "rows": [
+                        {
+                            "0": "AI",
+                            "1": 92
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Subject",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "max(Marks)",
+                            "field": "1",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 1 record retrieved in 1.361ms"
+                    },
+                    "totalRowCount": 1,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* . Find the student with the highest marks in AI subject. */\nSELECT Subject,max(Marks) FROM Marks WHERE Subject = \"AI\"  GROUP BY Subject;",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 60,
+                "end": 62,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "8314da35-097e-448c-9461-7002fd21c8e1"
+                    ]
+                },
+                "currentHeight": 186,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 240
+                        },
+                        "contentStart": 109,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
+                    "resultId": "8314da35-097e-448c-9461-7002fd21c8e1",
+                    "rows": [
+                        {
+                            "0": "Amit",
+                            "1": "87.5000"
+                        },
+                        {
+                            "0": "Riya",
+                            "1": "77.5000"
+                        },
+                        {
+                            "0": "Karan",
+                            "1": "88.0000"
+                        },
+                        {
+                            "0": "Neha",
+                            "1": "92.0000"
+                        },
+                        {
+                            "0": "Arjun",
+                            "1": "70.0000"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "name",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "AVG",
+                            "field": "1",
+                            "dataType": {
+                                "type": 10,
+                                "flags": [
+                                    "UNSIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 65,
+                                "numericScale": 30,
+                                "parameterFormatType": "TwoOrOneOrZero",
+                                "synonyms": [
+                                    "FIXED",
+                                    "NUMERIC",
+                                    "DEC"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 5 records retrieved in 0.919ms"
+                    },
+                    "totalRowCount": 5,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* Display all students along with their average marks (if any), showing 0 where marks are\nnot available. */\nSELECT s.name,COALESCE(AVG(m.marks),0) as AVG FROM students s RIGHT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID;",
+                    "updatable": false,
+                    "fullTableName": ""
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 63,
+                "end": 63,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}
