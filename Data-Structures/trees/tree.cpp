@@ -75,7 +75,7 @@ size_t BinaryTree<T>::NumOfLeaves(BNode<T> *root)
     }
 }
 template <class T>
-BNode<T>* BinaryTree<T>::interchangeSubtrees(BNode<T> *root)
+BNode<T> *BinaryTree<T>::interchangeSubtrees(BNode<T> *root)
 {
     BNode<T> *left, *right;
     if (root->left || root->right)
@@ -85,7 +85,8 @@ BNode<T>* BinaryTree<T>::interchangeSubtrees(BNode<T> *root)
         root->left = left;
         root->right = right;
     }
-    else{
+    else
+    {
         return root;
     }
 }
@@ -159,4 +160,222 @@ void BinaryTree<T>::postorder(BNode<T> *root)
     inorder(root->left);
     inorder(root->right);
     cout << root->data << endl;
+}
+
+// . BINARY SEARCH TREES
+
+template <class T>
+BST<T>::BST()
+{
+    this->root = nullptr;
+}
+
+template <class T>
+BNode<T> *BST<T>::getRoot()
+{
+    return this->root;
+}
+
+template <class T>
+BNode<T> *BST<T>::findNode(T val)
+{
+    if (!this->root)
+        return nullptr;
+    else
+    {
+        BNode<T> *iter = this->root;
+        while (iter)
+        {
+            if (iter->data == val)
+                return iter;
+            else if (val > iter->data)
+                iter = iter->right;
+            else
+                iter = iter->left;
+        }
+        return nullptr;
+    }
+}
+
+template <class T>
+void BST<T>::insertNode(T val)
+{
+    BNode<T> *newNode = new BNode<T>();
+    newNode->data = val;
+    newNode->left = nullptr;
+    newNode->right = nullptr;
+
+    if (!root)
+    {
+        this->root = newNode;
+    }
+    else
+    {
+        BNode<T> *iter = this->root;
+        while (iter)
+        {
+            if (val < iter->data && iter->left)
+                iter = iter->left;
+            else if (val >= iter->data && iter->right)
+                iter = iter->right;
+            else if (val < iter->data && !iter->left)
+            {
+                iter->left = newNode;
+                break;
+            }
+            else
+            {
+                iter->right = newNode;
+                break;
+            }
+        }
+    }
+}
+
+template <class T>
+BNode<T> *BST<T>::inorderPredecessor(BNode<T> *Node)
+{
+    if (!this->findNode(Node->data))
+        return nullptr;
+    else if (!Node->left)
+    {
+        return nullptr;
+    }
+    else
+    {
+        BNode<T> *left = Node->left;
+        while (left->right)
+        {
+            left = left->right;
+        }
+        return left;
+    }
+}
+
+template <class T>
+void BST<T>::deleteLeaf(BNode<T> *leaf)
+{
+    BNode<T> *iter = this->root;
+    BNode<T> *delNode = leaf;
+    while (iter->left != delNode && iter->right != delNode)
+    {
+        if (delNode->data < iter->data)
+        {
+            iter = iter->left;
+        }
+        else
+        {
+            iter = iter->right;
+        }
+    }
+    if (iter->left == delNode)
+        iter->left = nullptr;
+    else
+    {
+        iter->right = nullptr;
+    }
+    delete delNode;
+}
+
+template <class T>
+void BST<T>::deleteOneChild(BNode<T> *Node)
+{
+    BNode<T> *iter = this->root;
+    while (iter->left != Node && iter->right != Node)
+    {
+        if (Node->data < iter->data)
+        {
+            iter = iter->left;
+        }
+        else
+        {
+            iter = iter->right;
+        }
+    }
+    BNode<T> *replacement = Node->left ? Node->left : Node->right;
+    if (iter->left == Node)
+    {
+        iter->left = replacement;
+    }
+    else
+    {
+        iter->right = replacement;
+    }
+}
+
+template <class T>
+void BST<T>::deleteTwoChild(BNode<T> *Node)
+{
+    if (Node == this->root)
+    {
+        BNode<T> *inorderP = this->inorderPredecessor(Node);
+        T temp = inorderP->data;
+        deleteLeaf(inorderP);
+        Node->data = temp;
+    }
+    else
+    {
+        BNode<T> *iter = this->root;
+        while (iter->left != Node && iter->right != Node)
+        {
+            if (Node->data < iter->data)
+            {
+                iter = iter->left;
+            }
+            else
+            {
+                iter = iter->right;
+            }
+        }
+        BNode<T> *inorderP = this->inorderPredecessor(Node);
+        T temp = inorderP->data;
+        deleteLeaf(inorderP);
+        if (iter->left == Node)
+        {
+            iter->left->data = temp;
+        }
+        else
+        {
+            iter->right->data = temp;
+        }
+    }
+}
+
+template <class T>
+void BST<T>::deleteNode(T val)
+{
+    if (!this->root)
+    {
+        cout << "UNDERFLOW" << endl;
+    }
+    else
+    {
+        BNode<T> *delNode = this->findNode(val);
+        if (delNode)
+        {
+            if (!delNode->left && !delNode->right)
+            {
+                this->deleteLeaf(delNode);
+            }
+            else if ((delNode->left && !delNode->right) || !delNode->left && delNode->right)
+            {
+                this->deleteOneChild(delNode);
+            }
+            else
+            {
+                this->deleteTwoChild(delNode);
+            }
+        }
+    }
+}
+
+template <class T>
+void BST<T>::inorder(BNode<T> *root)
+{
+    if (root)
+    {
+        inorder(root->left);
+        cout << root->data << endl;
+        inorder(root->right);
+    }
 }
