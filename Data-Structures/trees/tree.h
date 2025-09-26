@@ -46,12 +46,18 @@ public:
     BNode<T> *getRoot();
     BNode<T> *findNode(T);
     BNode<T> *inorderPredecessor(BNode<T> *);
+    // TODO: implement the function below
     BNode<T> *inorderSuccessor(BNode<T> *);
+
+    size_t height(BNode<T>*);
+    size_t leaf(BNode<T> *);
 
     void insertNode(T);
 
     void deleteNode(T);
     void inorder(BNode<T> *);
+    void preorder(BNode<T> *);
+    void postorder(BNode<T> *);
 };
 
 #endif

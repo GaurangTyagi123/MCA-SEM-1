@@ -2,7 +2,7 @@
     "type": "MySQLNotebook",
     "version": "1.0",
     "caption": "DB Notebook",
-    "content": "\\about\nCREATE DATABASE IF NOT EXISTS School_DB ;\nuse School_DB;\nCREATE TABLE IF NOT EXISTS Students(\n    student_id int PRIMARY KEY,\n    name varchar(50),\n    age int,\n    grade varchar(10)\n);\nSHOW TABLES;\n\nINSERT INTO Students VALUES(\n    1,\n    \"Alice\",\n    14,\n    \"8th\"\n);\nINSERT INTO Students VALUES(\n    2,\n    \"Bob\",\n    15,\n    \"9th\"\n);\nINSERT INTO Students VALUES(\n    3,\n    \"Charlie\",\n    13,\n    \"7th\"\n);\nINSERT INTO Students VALUES(\n    4,\n    \"David\",\n    14,\n    \"8th\"\n);\nINSERT INTO Students VALUES(\n    5,\n    \"Eva\",\n    15,\n    \"9th\"\n);\nINSERT INTO Students VALUES(\n    6,\n    \"Frank\",\n    16,\n    \"10th\"\n);\nINSERT INTO Students VALUES(\n    7,\n    \"Grace\",\n    12,\n    \"6th\"\n);\nINSERT INTO Students VALUES(\n    8,\n    \"Helen\",\n    14,\n    \"8th\"\n);\nSELECT * FROM Students;\nSELECT name,grade from Students;\nSELECT * from Students WHERE age>14;\nSELECT * from Students WHERE grade=\"8th\";\nUPDATE Students set age=15 WHERE name=\"Alice\";\nDELETE FROM Students where id=3;\nSELECT * FROM Students;\nDROP TABLE Students;\nSHOW TABLES;\n",
+    "content": "\\about\nCREATE DATABASE IF NOT EXISTS School_DB ;\nuse School_DB;\nCREATE TABLE IF NOT EXISTS Students(\n    student_id int PRIMARY KEY,\n    name varchar(50),\n    age int,\n    grade varchar(10)\n);\nDESC students;\n\nINSERT INTO Students VALUES(\n    1,\n    \"Alice\",\n    14,\n    \"8th\"\n);\nINSERT INTO Students VALUES(\n    2,\n    \"Bob\",\n    15,\n    \"9th\"\n);\nINSERT INTO Students VALUES(\n    3,\n    \"Charlie\",\n    13,\n    \"7th\"\n);\nINSERT INTO Students VALUES(\n    4,\n    \"David\",\n    14,\n    \"8th\"\n);\nINSERT INTO Students VALUES(\n    5,\n    \"Eva\",\n    15,\n    \"9th\"\n);\nINSERT INTO Students VALUES(\n    6,\n    \"Frank\",\n    16,\n    \"10th\"\n);\nINSERT INTO Students VALUES(\n    7,\n    \"Grace\",\n    12,\n    \"6th\"\n);\nINSERT INTO Students VALUES(\n    8,\n    \"Helen\",\n    14,\n    \"8th\"\n);\nSELECT * FROM Students;\nSELECT name,grade from Students;\nSELECT * from Students WHERE age>14;\nSELECT * from Students WHERE grade=\"8th\";\nUPDATE Students set age=15 WHERE name=\"Alice\";\nDELETE FROM Students where student_id=3;\nDELETE FROM students WHERE grade = \"7th\";\nSELECT * FROM Students;\nDROP TABLE IF EXISTS students;\n",
     "options": {
         "tabSize": 4,
         "insertSpaces": true,
@@ -27,10 +27,10 @@
         "viewState": {
             "scrollLeft": 0,
             "firstPosition": {
-                "lineNumber": 61,
+                "lineNumber": 60,
                 "column": 1
             },
-            "firstPositionDeltaTop": 82
+            "firstPositionDeltaTop": 78
         },
         "contributionsState": {
             "editor.contrib.folding": {},
@@ -74,6 +74,16 @@
                 "start": 2,
                 "end": 10,
                 "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "f80f95d0-a335-47ae-ad9a-f1a1eaeaa253",
+                        "4c308d3d-c4d1-4fb4-80bc-d4211c0e0fa3",
+                        "506e96d4-a061-4a5c-e821-60359d784b3e",
+                        "6e741972-8413-41f0-8944-a42daf123c4e"
+                    ]
+                },
+                "currentHeight": 36,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -107,23 +117,252 @@
                         "delimiter": ";",
                         "span": {
                             "start": 185,
-                            "length": 13
+                            "length": 15
                         },
-                        "contentStart": 186,
+                        "contentStart": 187,
                         "state": 0
                     },
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 198,
+                            "start": 200,
                             "length": 1
                         },
-                        "contentStart": 197,
+                        "contentStart": 199,
                         "state": 3
                     }
                 ]
             },
-            "data": []
+            "data": [
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "f80f95d0-a335-47ae-ad9a-f1a1eaeaa253",
+                    "rows": [
+                        {
+                            "0": "student_id",
+                            "1": "int",
+                            "2": "NO",
+                            "3": "PRI",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "name",
+                            "1": "varchar(50)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "age",
+                            "1": "int",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "grade",
+                            "1": "varchar(10)",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Field",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Type",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Null",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Key",
+                            "field": "3",
+                            "dataType": {
+                                "type": 43,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Default",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Extra",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 4 records retrieved in 1.96ms"
+                    },
+                    "totalRowCount": 4,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 3,
+                    "sql": "\nDESC students",
+                    "updatable": false
+                },
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "4c308d3d-c4d1-4fb4-80bc-d4211c0e0fa3",
+                    "rows": [],
+                    "columns": [
+                        {
+                            "title": "*",
+                            "field": "0",
+                            "dataType": {
+                                "type": 0
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 1 row affected in 2.859ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "CREATE DATABASE IF NOT EXISTS School_DB ",
+                    "updatable": false
+                },
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "506e96d4-a061-4a5c-e821-60359d784b3e",
+                    "rows": [],
+                    "columns": [
+                        {
+                            "title": "*",
+                            "field": "0",
+                            "dataType": {
+                                "type": 0
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 0 records retrieved in 0.484ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 1,
+                    "sql": "\nuse School_DB",
+                    "updatable": false
+                },
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "6e741972-8413-41f0-8944-a42daf123c4e",
+                    "rows": [],
+                    "columns": [
+                        {
+                            "title": "*",
+                            "field": "0",
+                            "dataType": {
+                                "type": 0
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 0 records retrieved in 4.363ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 2,
+                    "sql": "\nCREATE TABLE IF NOT EXISTS Students(\n    student_id int PRIMARY KEY,\n    name varchar(50),\n    age int,\n    grade varchar(10)\n)",
+                    "updatable": false
+                }
+            ]
         },
         {
             "state": {
@@ -136,54 +375,54 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "fd47ef54-c870-4808-90fc-332e9ab497c7",
-                            "content": "OK, 1 row affected in 7.076ms"
+                            "resultId": "67838b72-2ed8-4419-a2b8-0bd88223364b",
+                            "content": "OK, 1 row affected in 3.596ms"
                         },
                         {
                             "type": 2,
                             "index": 1,
-                            "resultId": "b91661b3-8042-4f96-ccb9-fd69128a7de0",
-                            "content": "OK, 1 row affected in 2.59ms"
+                            "resultId": "b5320ba7-e00e-4092-b54a-fba86feed787",
+                            "content": "OK, 1 row affected in 1.948ms"
                         },
                         {
                             "type": 2,
                             "index": 2,
-                            "resultId": "e9b15e89-e9d8-470f-9779-6275c972257f",
-                            "content": "OK, 1 row affected in 2.017ms"
+                            "resultId": "12301aaf-a32a-4ae7-bbac-4b4d2d7573cf",
+                            "content": "OK, 1 row affected in 1.96ms"
                         },
                         {
                             "type": 2,
                             "index": 3,
-                            "resultId": "bc4e1549-3e28-4dd7-992c-f42dadde97aa",
-                            "content": "OK, 1 row affected in 1.95ms"
+                            "resultId": "2c4728fa-96cc-45ac-f6ca-5bc87d3de2e7",
+                            "content": "OK, 1 row affected in 2.41ms"
                         },
                         {
                             "type": 2,
                             "index": 4,
-                            "resultId": "e8dc7a57-66f6-432e-f461-889e5f995092",
-                            "content": "OK, 1 row affected in 1.887ms"
+                            "resultId": "3ff4b289-c80b-4c03-8aa2-c328fe076530",
+                            "content": "OK, 1 row affected in 1.712ms"
                         },
                         {
                             "type": 2,
                             "index": 5,
-                            "resultId": "094eea31-d521-4e3c-b718-5a0f42c9ce8e",
-                            "content": "OK, 1 row affected in 1.703ms"
+                            "resultId": "5b0cdd56-ab13-45b9-a01e-2ef1ae600742",
+                            "content": "OK, 1 row affected in 1.804ms"
                         },
                         {
                             "type": 2,
                             "index": 6,
-                            "resultId": "d0c9ad5d-e873-4458-f575-11309529db69",
-                            "content": "OK, 1 row affected in 5.937ms"
+                            "resultId": "c1a28e55-37c1-4ff8-ff07-2d29c08a45d7",
+                            "content": "OK, 1 row affected in 1.657ms"
                         },
                         {
                             "type": 2,
                             "index": 7,
-                            "resultId": "c6c83ea7-f699-4a50-984f-47021b01da8d",
-                            "content": "OK, 1 row affected in 2.068ms"
+                            "resultId": "35f5314e-990e-4923-8355-f684bc1735a5",
+                            "content": "OK, 1 row affected in 1.751ms"
                         }
                     ]
                 },
-                "currentHeight": 28,
+                "currentHeight": 155.1875,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -279,7 +518,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "939dc802-48dc-42b5-8700-376a3b1c9f8e"
+                        "91262f6a-bc0a-4f14-f24c-feeb5ca110e8"
                     ]
                 },
                 "currentHeight": 257.390625,
@@ -307,8 +546,8 @@
             },
             "data": [
                 {
-                    "tabId": "e3ec0152-d45e-4e5a-ade6-8facda1855df",
-                    "resultId": "939dc802-48dc-42b5-8700-376a3b1c9f8e",
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "91262f6a-bc0a-4f14-f24c-feeb5ca110e8",
                     "rows": [
                         {
                             "0": 1,
@@ -441,7 +680,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 8 records retrieved in 0.848ms"
+                        "text": "OK, 8 records retrieved in 0.753ms"
                     },
                     "totalRowCount": 8,
                     "hasMoreRows": false,
@@ -456,10 +695,22 @@
         {
             "state": {
                 "start": 61,
-                "end": 66,
+                "end": 67,
                 "language": "mysql",
-                "currentHeight": 284.390625,
-                "currentSet": 1,
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "298fece7-709a-4bf8-a483-b54c712a9e84",
+                        "c8b14607-b2b2-4bb8-c21e-e2a6145cf37e",
+                        "b672053d-839d-4572-e604-28a384b3176c",
+                        "3bbfb3be-6a42-4e0e-ccf3-1e6f7a5bd7a3",
+                        "518fce35-556c-4b5e-fc1b-c3c98995cef2",
+                        "07381bef-5eaa-4bd8-9614-8f08521d5f59",
+                        "bf0e0f20-ee0b-4d47-ae3d-e3fa25afeade"
+                    ]
+                },
+                "currentHeight": 98.1875,
+                "currentSet": 0,
                 "statements": [
                     {
                         "delimiter": ";",
@@ -501,7 +752,7 @@
                         "delimiter": ";",
                         "span": {
                             "start": 158,
-                            "length": 33
+                            "length": 41
                         },
                         "contentStart": 160,
                         "state": 0
@@ -509,19 +760,564 @@
                     {
                         "delimiter": ";",
                         "span": {
-                            "start": 191,
+                            "start": 199,
+                            "length": 42
+                        },
+                        "contentStart": 201,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 241,
                             "length": 24
                         },
-                        "contentStart": 192,
+                        "contentStart": 242,
                         "state": 0
                     }
                 ]
             },
-            "data": []
+            "data": [
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "298fece7-709a-4bf8-a483-b54c712a9e84",
+                    "rows": [
+                        {
+                            "0": "Alice",
+                            "1": "8th"
+                        },
+                        {
+                            "0": "Bob",
+                            "1": "9th"
+                        },
+                        {
+                            "0": "David",
+                            "1": "8th"
+                        },
+                        {
+                            "0": "Eva",
+                            "1": "9th"
+                        },
+                        {
+                            "0": "Frank",
+                            "1": "10th"
+                        },
+                        {
+                            "0": "Grace",
+                            "1": "6th"
+                        },
+                        {
+                            "0": "Helen",
+                            "1": "8th"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "name",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "grade",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 7 records retrieved in 0.675ms"
+                    },
+                    "totalRowCount": 7,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "SELECT name,grade from Students",
+                    "updatable": false,
+                    "fullTableName": "Students"
+                },
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "c8b14607-b2b2-4bb8-c21e-e2a6145cf37e",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Alice",
+                            "2": 15,
+                            "3": "8th"
+                        },
+                        {
+                            "0": 2,
+                            "1": "Bob",
+                            "2": 15,
+                            "3": "9th"
+                        },
+                        {
+                            "0": 5,
+                            "1": "Eva",
+                            "2": 15,
+                            "3": "9th"
+                        },
+                        {
+                            "0": 6,
+                            "1": "Frank",
+                            "2": 16,
+                            "3": "10th"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "student_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "age",
+                            "field": "2",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "grade",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 4 records retrieved in 0.8ms"
+                    },
+                    "totalRowCount": 4,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 1,
+                    "sql": "\nSELECT * from Students WHERE age>14",
+                    "updatable": true,
+                    "fullTableName": "Students"
+                },
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "b672053d-839d-4572-e604-28a384b3176c",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Alice",
+                            "2": 15,
+                            "3": "8th"
+                        },
+                        {
+                            "0": 4,
+                            "1": "David",
+                            "2": 14,
+                            "3": "8th"
+                        },
+                        {
+                            "0": 8,
+                            "1": "Helen",
+                            "2": 14,
+                            "3": "8th"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "student_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "age",
+                            "field": "2",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "grade",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 3 records retrieved in 0.898ms"
+                    },
+                    "totalRowCount": 3,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 2,
+                    "sql": "\nSELECT * from Students WHERE grade=\"8th\"",
+                    "updatable": true,
+                    "fullTableName": "Students"
+                },
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "3bbfb3be-6a42-4e0e-ccf3-1e6f7a5bd7a3",
+                    "rows": [
+                        {
+                            "0": 1,
+                            "1": "Alice",
+                            "2": 15,
+                            "3": "8th"
+                        },
+                        {
+                            "0": 2,
+                            "1": "Bob",
+                            "2": 15,
+                            "3": "9th"
+                        },
+                        {
+                            "0": 4,
+                            "1": "David",
+                            "2": 14,
+                            "3": "8th"
+                        },
+                        {
+                            "0": 5,
+                            "1": "Eva",
+                            "2": 15,
+                            "3": "9th"
+                        },
+                        {
+                            "0": 6,
+                            "1": "Frank",
+                            "2": 16,
+                            "3": "10th"
+                        },
+                        {
+                            "0": 7,
+                            "1": "Grace",
+                            "2": 12,
+                            "3": "6th"
+                        },
+                        {
+                            "0": 8,
+                            "1": "Helen",
+                            "2": 14,
+                            "3": "8th"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "student_id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "age",
+                            "field": "2",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "grade",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 7 records retrieved in 0.626ms"
+                    },
+                    "totalRowCount": 7,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 6,
+                    "sql": "\nSELECT * FROM Students",
+                    "updatable": true,
+                    "fullTableName": "Students"
+                },
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "518fce35-556c-4b5e-fc1b-c3c98995cef2",
+                    "rows": [],
+                    "columns": [
+                        {
+                            "title": "*",
+                            "field": "0",
+                            "dataType": {
+                                "type": 0
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 0 records retrieved in 0.62ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 3,
+                    "sql": "\nUPDATE Students set age=15 WHERE name=\"Alice\"",
+                    "updatable": false
+                },
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "07381bef-5eaa-4bd8-9614-8f08521d5f59",
+                    "rows": [],
+                    "columns": [
+                        {
+                            "title": "*",
+                            "field": "0",
+                            "dataType": {
+                                "type": 0
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 0 records retrieved in 0.873ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 4,
+                    "sql": "\nDELETE FROM Students where student_id=3",
+                    "updatable": false
+                },
+                {
+                    "tabId": "c0c7fb36-9095-4960-cac2-f709c552b63d",
+                    "resultId": "bf0e0f20-ee0b-4d47-ae3d-e3fa25afeade",
+                    "rows": [],
+                    "columns": [
+                        {
+                            "title": "*",
+                            "field": "0",
+                            "dataType": {
+                                "type": 0
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 0 records retrieved in 0.729ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 5,
+                    "sql": "\nDELETE FROM students WHERE grade = \"7th\"",
+                    "updatable": false
+                }
+            ]
         },
         {
             "state": {
-                "start": 67,
+                "start": 68,
                 "end": 68,
                 "language": "mysql",
                 "result": {
@@ -530,36 +1326,21 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "8eb786d0-0986-4910-ae62-9a6aa70557d9",
-                            "content": "OK, 0 records retrieved in 21.978ms"
-                        },
-                        {
-                            "type": 2,
-                            "index": 1,
-                            "resultId": "cf3757fd-acd7-41fb-9dc4-66c1aaaf3c9c",
-                            "content": "OK, 0 records retrieved in 3.164ms"
+                            "resultId": "1c372597-4a60-49ed-fd32-e73fd68f063d",
+                            "content": "OK, 0 records retrieved in 15.93ms"
                         }
                     ]
                 },
-                "currentHeight": 44.796875,
+                "currentHeight": 28,
                 "currentSet": 1,
                 "statements": [
                     {
                         "delimiter": ";",
                         "span": {
                             "start": 0,
-                            "length": 20
+                            "length": 30
                         },
                         "contentStart": 1,
-                        "state": 0
-                    },
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 20,
-                            "length": 13
-                        },
-                        "contentStart": 21,
                         "state": 0
                     }
                 ]

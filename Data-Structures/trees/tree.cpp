@@ -141,7 +141,6 @@ void BinaryTree<T>::inorder(BNode<T> *root)
     cout << root->data << endl;
     inorder(root->right);
 }
-
 template <class T>
 void BinaryTree<T>::preorder(BNode<T> *root)
 {
@@ -151,6 +150,9 @@ void BinaryTree<T>::preorder(BNode<T> *root)
     inorder(root->left);
     inorder(root->right);
 }
+
+
+
 
 template <class T>
 void BinaryTree<T>::postorder(BNode<T> *root)
@@ -310,7 +312,7 @@ void BST<T>::deleteTwoChild(BNode<T> *Node)
     {
         BNode<T> *inorderP = this->inorderPredecessor(Node);
         T temp = inorderP->data;
-        deleteLeaf(inorderP);
+        deleteNode(inorderP->data);
         Node->data = temp;
     }
     else
@@ -329,7 +331,7 @@ void BST<T>::deleteTwoChild(BNode<T> *Node)
         }
         BNode<T> *inorderP = this->inorderPredecessor(Node);
         T temp = inorderP->data;
-        deleteLeaf(inorderP);
+        deleteNode(inorderP->data);
         if (iter->left == Node)
         {
             iter->left->data = temp;
@@ -377,5 +379,53 @@ void BST<T>::inorder(BNode<T> *root)
         inorder(root->left);
         cout << root->data << endl;
         inorder(root->right);
+    }
+}
+template <class T>
+void BST<T>::preorder(BNode<T> *root)
+{
+    if (root)
+    {
+        cout << root->data << endl;
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+template <class T>
+void BST<T>::postorder(BNode<T> *root)
+{
+    if (root)
+    {
+        postorder(root->left);
+        postorder(root->right);
+        cout << root->data << endl;
+    }
+}
+
+template <class T>
+size_t BST<T>::height(BNode<T> *root)
+{
+    if (root)
+    {
+        return 1 + max(height(root->left), height(root->right));
+    }
+    else
+        return -1;
+}
+
+template <class T>
+size_t BST<T>::leaf(BNode<T> *root)
+{
+    size_t left;
+    size_t right;
+    if (root->left && root->right)
+    {
+        left = this->leaf(root->left);
+        right = this->leaf(root->right);
+        return left + right;
+    }
+    else
+    {
+        return 1;
     }
 }

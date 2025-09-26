@@ -24,7 +24,7 @@
                 "lineNumber": 32,
                 "column": 1
             },
-            "firstPositionDeltaTop": -7
+            "firstPositionDeltaTop": 21
         },
         "contributionsState": {
             "editor.contrib.folding": {},
@@ -40,7 +40,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "f7e7830e-d78c-4cf6-8ba0-ebb2e5c17564"
+                        "e54642fe-df6b-4fb2-ebd7-eb33e228304f"
                     ]
                 },
                 "currentHeight": 36,
@@ -59,8 +59,8 @@
             },
             "data": [
                 {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "f7e7830e-d78c-4cf6-8ba0-ebb2e5c17564",
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "e54642fe-df6b-4fb2-ebd7-eb33e228304f",
                     "rows": [
                         {
                             "0": "b'employee'"
@@ -145,8 +145,8 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "38264e92-2650-43b1-f8a8-3da0f3ffce33",
-                            "content": "OK, 0 records retrieved in 0.711ms"
+                            "resultId": "aee5d359-5cea-41b4-c39e-12ec473a65e5",
+                            "content": "OK, 0 records retrieved in 1.459ms"
                         }
                     ]
                 },
@@ -171,6 +171,21 @@
                 "start": 4,
                 "end": 11,
                 "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1050): Table 'employees' already exists",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -218,6 +233,21 @@
                 "start": 12,
                 "end": 19,
                 "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1062): Duplicate entry '1' for key 'employees.PRIMARY'",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
+                },
+                "currentHeight": 28,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -250,7 +280,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "ee5a77f0-c513-456d-985b-a37636226049"
+                        "f1682678-d5f0-4a7e-c9ee-3be4710649f3"
                     ]
                 },
                 "currentHeight": 36,
@@ -269,154 +299,8 @@
             },
             "data": [
                 {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "ee5a77f0-c513-456d-985b-a37636226049",
-                    "rows": [
-                        {
-                            "0": 2,
-                            "1": "NEHA",
-                            "2": "IT",
-                            "3": 60000,
-                            "4": "2019-03-10"
-                        },
-                        {
-                            "0": 4,
-                            "1": "Simran",
-                            "2": "IT",
-                            "3": 70000,
-                            "4": "2018-11-01"
-                        }
-                    ],
-                    "columns": [
-                        {
-                            "title": "empid",
-                            "field": "0",
-                            "dataType": {
-                                "type": 4,
-                                "flags": [
-                                    "SIGNED",
-                                    "ZEROFILL"
-                                ],
-                                "numericPrecision": 10,
-                                "parameterFormatType": "OneOrZero",
-                                "synonyms": [
-                                    "INTEGER",
-                                    "INT4"
-                                ]
-                            },
-                            "inPK": false,
-                            "nullable": false,
-                            "autoIncrement": false
-                        },
-                        {
-                            "title": "name",
-                            "field": "1",
-                            "dataType": {
-                                "type": 17,
-                                "characterMaximumLength": 65535,
-                                "flags": [
-                                    "BINARY",
-                                    "ASCII",
-                                    "UNICODE"
-                                ],
-                                "needsQuotes": true,
-                                "parameterFormatType": "OneOrZero"
-                            },
-                            "inPK": false,
-                            "nullable": false,
-                            "autoIncrement": false
-                        },
-                        {
-                            "title": "department",
-                            "field": "2",
-                            "dataType": {
-                                "type": 17,
-                                "characterMaximumLength": 65535,
-                                "flags": [
-                                    "BINARY",
-                                    "ASCII",
-                                    "UNICODE"
-                                ],
-                                "needsQuotes": true,
-                                "parameterFormatType": "OneOrZero"
-                            },
-                            "inPK": false,
-                            "nullable": false,
-                            "autoIncrement": false
-                        },
-                        {
-                            "title": "salary",
-                            "field": "3",
-                            "dataType": {
-                                "type": 4,
-                                "flags": [
-                                    "SIGNED",
-                                    "ZEROFILL"
-                                ],
-                                "numericPrecision": 10,
-                                "parameterFormatType": "OneOrZero",
-                                "synonyms": [
-                                    "INTEGER",
-                                    "INT4"
-                                ]
-                            },
-                            "inPK": false,
-                            "nullable": false,
-                            "autoIncrement": false
-                        },
-                        {
-                            "title": "joiningdate",
-                            "field": "4",
-                            "dataType": {
-                                "type": 27,
-                                "needsQuotes": true
-                            },
-                            "inPK": false,
-                            "nullable": false,
-                            "autoIncrement": false
-                        }
-                    ],
-                    "executionInfo": {
-                        "text": "OK, 2 records retrieved in 0.78ms"
-                    },
-                    "totalRowCount": 2,
-                    "hasMoreRows": false,
-                    "currentPage": 0,
-                    "index": 0,
-                    "sql": "/* All the employees who work in the IT department */\nSELECT * FROM employees where department = \"IT\";",
-                    "updatable": false
-                }
-            ]
-        },
-        {
-            "state": {
-                "start": 22,
-                "end": 23,
-                "language": "mysql",
-                "result": {
-                    "type": "resultIds",
-                    "list": [
-                        "8b48df2c-94fc-4f94-f089-4ff4fc62d79f"
-                    ]
-                },
-                "currentHeight": 36,
-                "currentSet": 1,
-                "statements": [
-                    {
-                        "delimiter": ";",
-                        "span": {
-                            "start": 0,
-                            "length": 92
-                        },
-                        "contentStart": 47,
-                        "state": 3
-                    }
-                ]
-            },
-            "data": [
-                {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "8b48df2c-94fc-4f94-f089-4ff4fc62d79f",
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "f1682678-d5f0-4a7e-c9ee-3be4710649f3",
                     "rows": [
                         {
                             "0": 2,
@@ -514,7 +398,7 @@
                             "default": null
                         },
                         {
-                            "title": "joiningdate",
+                            "title": "joinDate",
                             "field": "4",
                             "dataType": {
                                 "type": 27,
@@ -527,7 +411,158 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 2 records retrieved in 0.927ms"
+                        "text": "OK, 2 records retrieved in 1.733ms"
+                    },
+                    "totalRowCount": 2,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "/* All the employees who work in the IT department */\nSELECT * FROM employees where department = \"IT\";",
+                    "updatable": true,
+                    "fullTableName": "employees"
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 22,
+                "end": 23,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "0d7df227-6120-4c3d-a382-cafc5424a68a"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 92
+                        },
+                        "contentStart": 47,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "0d7df227-6120-4c3d-a382-cafc5424a68a",
+                    "rows": [
+                        {
+                            "0": 2,
+                            "1": "NEHA",
+                            "2": "IT",
+                            "3": 60000,
+                            "4": "2019-03-10"
+                        },
+                        {
+                            "0": 4,
+                            "1": "Simran",
+                            "2": "IT",
+                            "3": 70000,
+                            "4": "2018-11-01"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "empid",
+                            "field": "0",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "name",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "department",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "salary",
+                            "field": "3",
+                            "dataType": {
+                                "type": 4,
+                                "flags": [
+                                    "SIGNED",
+                                    "ZEROFILL"
+                                ],
+                                "numericPrecision": 10,
+                                "parameterFormatType": "OneOrZero",
+                                "synonyms": [
+                                    "INTEGER",
+                                    "INT4"
+                                ]
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "joinDate",
+                            "field": "4",
+                            "dataType": {
+                                "type": 27,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 2 records retrieved in 1.335ms"
                     },
                     "totalRowCount": 2,
                     "hasMoreRows": false,
@@ -545,12 +580,20 @@
                 "end": 25,
                 "language": "mysql",
                 "result": {
-                    "type": "resultIds",
-                    "list": [
-                        "9a316119-d58b-4893-c86c-bd761275be28"
-                    ]
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 0,
+                            "index": 0,
+                            "content": "MySQL Error (1054): Unknown column 'joiningdate' in 'where clause'",
+                            "language": "ansi"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": ""
+                    }
                 },
-                "currentHeight": 162.1999969482422,
+                "currentHeight": 28,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -564,55 +607,7 @@
                     }
                 ]
             },
-            "data": [
-                {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "9a316119-d58b-4893-c86c-bd761275be28",
-                    "rows": [
-                        {
-                            "0": "Amit"
-                        },
-                        {
-                            "0": "Ravi"
-                        },
-                        {
-                            "0": "Raj"
-                        },
-                        {
-                            "0": "Priya"
-                        }
-                    ],
-                    "columns": [
-                        {
-                            "title": "name",
-                            "field": "0",
-                            "dataType": {
-                                "type": 17,
-                                "characterMaximumLength": 65535,
-                                "flags": [
-                                    "BINARY",
-                                    "ASCII",
-                                    "UNICODE"
-                                ],
-                                "needsQuotes": true,
-                                "parameterFormatType": "OneOrZero"
-                            },
-                            "inPK": false,
-                            "nullable": false,
-                            "autoIncrement": false
-                        }
-                    ],
-                    "executionInfo": {
-                        "text": "OK, 4 records retrieved in 1.608ms"
-                    },
-                    "totalRowCount": 4,
-                    "hasMoreRows": false,
-                    "currentPage": 0,
-                    "index": 0,
-                    "sql": "/* names of the employees who joined after 2020-01-01 */\nSELECT name from employees WHERE joiningdate > \"2020-01-01\";",
-                    "updatable": false
-                }
-            ]
+            "data": []
         },
         {
             "state": {
@@ -622,7 +617,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "f4bfcd8e-88fa-40ab-f3a6-3e612310eca1"
+                        "4c753e00-d9d0-418b-a0f2-fead25bb4d13"
                     ]
                 },
                 "currentHeight": 36,
@@ -641,8 +636,8 @@
             },
             "data": [
                 {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "f4bfcd8e-88fa-40ab-f3a6-3e612310eca1",
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "4c753e00-d9d0-418b-a0f2-fead25bb4d13",
                     "rows": [
                         {
                             "0": "Amit",
@@ -700,7 +695,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 3 records retrieved in 3.572ms"
+                        "text": "OK, 3 records retrieved in 0.761ms"
                     },
                     "totalRowCount": 3,
                     "hasMoreRows": false,
@@ -720,7 +715,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "f432ac45-84a0-479d-9180-bce326924464"
+                        "70fff3a0-6298-491f-b332-2199a7b5b488"
                     ]
                 },
                 "currentHeight": 36,
@@ -739,8 +734,8 @@
             },
             "data": [
                 {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "f432ac45-84a0-479d-9180-bce326924464",
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "70fff3a0-6298-491f-b332-2199a7b5b488",
                     "rows": [
                         {
                             "0": "Ravi",
@@ -788,14 +783,15 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 1 record retrieved in 2.394ms"
+                        "text": "OK, 1 record retrieved in 2.06ms"
                     },
                     "totalRowCount": 1,
                     "hasMoreRows": false,
                     "currentPage": 0,
                     "index": 0,
                     "sql": "/* highest salary in finance department */\nSELECT name,max(salary) from employees GROUP BY department having MAX(salary) and department = \"Finance\";",
-                    "updatable": false
+                    "updatable": false,
+                    "fullTableName": ""
                 }
             ]
         },
@@ -807,10 +803,10 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "23818a5a-2b16-44e9-8386-053b1ed56f97"
+                        "7a624a77-9502-483c-e698-e0eb18dda49c"
                     ]
                 },
-                "currentHeight": 36,
+                "currentHeight": 138.390625,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -826,8 +822,8 @@
             },
             "data": [
                 {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "23818a5a-2b16-44e9-8386-053b1ed56f97",
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "7a624a77-9502-483c-e698-e0eb18dda49c",
                     "rows": [
                         {
                             "0": "HR",
@@ -883,7 +879,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 3 records retrieved in 0.538ms"
+                        "text": "OK, 3 records retrieved in 0.999ms"
                     },
                     "totalRowCount": 3,
                     "hasMoreRows": false,
@@ -903,7 +899,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "0e92544b-e2dc-4db5-af83-fd1230146861"
+                        "af220a86-0e4b-4196-8223-0504522a573b"
                     ]
                 },
                 "currentHeight": 209.796875,
@@ -922,8 +918,8 @@
             },
             "data": [
                 {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "0e92544b-e2dc-4db5-af83-fd1230146861",
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "af220a86-0e4b-4196-8223-0504522a573b",
                     "rows": [
                         {
                             "0": 4,
@@ -1082,7 +1078,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "e9c745ce-c246-4aa8-fb70-be5c8e9cdf63"
+                        "558e56a4-4139-4c5d-b942-a215454ae7d8"
                     ]
                 },
                 "currentHeight": 85.390625,
@@ -1101,8 +1097,8 @@
             },
             "data": [
                 {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "e9c745ce-c246-4aa8-fb70-be5c8e9cdf63",
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "558e56a4-4139-4c5d-b942-a215454ae7d8",
                     "rows": [],
                     "columns": [
                         {
@@ -1117,7 +1113,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 0 records retrieved in 0.845ms"
+                        "text": "OK, 0 records retrieved in 1.322ms"
                     },
                     "totalRowCount": 0,
                     "hasMoreRows": false,
@@ -1137,7 +1133,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "b2338688-216e-463c-c0d6-b132cc229bd7"
+                        "3b87d110-58fc-4e93-d102-39e88b73f9d3"
                     ]
                 },
                 "currentHeight": 90.796875,
@@ -1156,8 +1152,8 @@
             },
             "data": [
                 {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "b2338688-216e-463c-c0d6-b132cc229bd7",
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "3b87d110-58fc-4e93-d102-39e88b73f9d3",
                     "rows": [
                         {
                             "0": "IT",
@@ -1226,7 +1222,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "bd147871-0dd6-4ef1-baef-a80c0f45a197"
+                        "203c719c-5893-422e-df0e-fb3f56d463bf"
                     ]
                 },
                 "currentHeight": 114.59375,
@@ -1245,8 +1241,8 @@
             },
             "data": [
                 {
-                    "tabId": "b77bae1e-4731-4385-993c-d0745ed4f8ce",
-                    "resultId": "bd147871-0dd6-4ef1-baef-a80c0f45a197",
+                    "tabId": "15559a26-1b0a-4f40-9936-65b9bdc41fce",
+                    "resultId": "203c719c-5893-422e-df0e-fb3f56d463bf",
                     "rows": [
                         {
                             "0": 3,

@@ -2,29 +2,29 @@
     "type": "MySQLNotebook",
     "version": "1.0",
     "caption": "DB Notebook",
-    "content": "use school_db;\r\nshow TABLES\r\nCREATE TABLE IF NOT EXISTS Departments(\r\nDepartmentID int PRIMARY KEY AUTO_INCREMENT,\r\nDepartmentName VARCHAR(50)\r\n);\r\nCREATE TABLE IF NOT EXISTS Students(\r\nStudentID int PRIMARY KEY AUTO_INCREMENT,\r\nName varchar(50),\r\nAge INT,\r\nDepartment INT,\r\nFOREIGN KEY Students(Department) REFERENCES Departments(DepartmentID)\r\n)\r\n\r\nCREATE TABLE IF NOT EXISTS Marks(\r\nMarksID INT PRIMARY KEY AUTO_INCREMENT,\r\nStudentID INT,\r\nSubject VARCHAR(5),\r\nMarks INT,\r\nFOREIGN KEY Marks(StudentID) REFERENCES Students(StudentID)\r\n);\r\n\r\nINSERT INTO Departments(DepartmentID,DepartmentName) VALUES\r\n(1,\"Computer Science\"),\r\n(2,\"Mathematics\"),\r\n(3,\"Physics\");\r\nINSERT INTO Students(StudentID,Name,Age,Department) VALUES\r\n(1,\"Amit\",20,1),\r\n(2,\"Riya\",22,2),\r\n(3,\"Karan\",21,1),\r\n(4,\"Neha\",23,3),\r\n(5,\"Arjun\",20,2);\r\nINSERT INTO marks(MarksID,StudentID,Subject,Marks) VALUES\r\n(1,1,\"DBMS\",85),\r\n(2,1,\"AI\",90),\r\n(3,2,\"DBMS\",75),\r\n(4,2,\"AI\",80),\r\n(5,3,\"DBMS\",88),\r\n(6,4,\"AI\",92),\r\n(7,5,\"DBMS\",70);\r\n/* Retrieve all students along with their department names */\r\nSELECT name,DepartmentName from students,departments where students.department - departments.DepartmentID;\r\n/* Find the average marks obtained by each student. */\r\nSELECT AVG(m.marks) \"AVG_MARKS\",s.name FROM students s JOIN marks m on m.StudentID = s.StudentID GROUP BY s.StudentID;\r\n/* Find the maximum marks in each subject */\r\nSELECT m.Subject,max(m.marks) from Marks m GROUP BY m.Subject;\r\n/* List students who scored more than 80 in all subject */\r\nSELECT s.name from students s JOIN marks m ON s.StudentID = m.StudentID GROUP BY m.StudentID having MIN(m.marks) >= 80;\r\n/* Retrieve all students ordered by their average marks in descending order. */\r\nSELECT s.name,AVG(m.marks) as \"AVG_MARKS\" FROM students s LEFT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID ORDER BY AVG_MARKS;\r\n/* Find the total marks scored by students in each department. */\r\nSELECT d.DepartmentName,sum(m.marks) as TOTAL FROM Marks m JOIN Students s ON m.StudentID = s.StudentID JOIN Departments d ON s.Department = d.DepartmentID GROUP BY d.DepartmentID;\r\n/* Display students who have not received any marks yet. */\r\nSELECT s.name FROM students s WHERE s.StudentID not in ( SELECT StudentID from students );\r\n/* Retrieve department names along with the number of students enrolled in each\r\ndepartment. */\r\nSELECT d.DepartmentName, count(*) as NUM_OF_STUDENTS FROM departments d JOIN students s ON d.DepartmentID = s.Department GROUP BY d.DepartmentID;\r\n/* . Find the student with the highest marks in AI subject. */\r\nSELECT Subject,max(Marks) FROM Marks WHERE Subject = \"AI\"  GROUP BY Subject;\r\n/* Display all students along with their average marks (if any), showing 0 where marks are\r\nnot available. */\r\nSELECT s.name,COALESCE(AVG(m.marks),0) as AVG FROM students s RIGHT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID;\r\n",
+    "content": "CREATE DATABASE IF NOT EXISTS school_db;\r\nuse school_db;\r\nshow TABLES\r\nCREATE TABLE IF NOT EXISTS Departments(\r\nDepartmentID int PRIMARY KEY AUTO_INCREMENT,\r\nDepartmentName VARCHAR(50)\r\n);\r\nCREATE TABLE IF NOT EXISTS Students(\r\nStudentID int PRIMARY KEY AUTO_INCREMENT,\r\nName varchar(50),\r\nAge INT,\r\nDepartment INT,\r\nFOREIGN KEY Students(Department) REFERENCES Departments(DepartmentID)\r\n)\r\n\r\nCREATE TABLE IF NOT EXISTS Marks(\r\nMarksID INT PRIMARY KEY AUTO_INCREMENT,\r\nStudentID INT,\r\nSubject VARCHAR(5),\r\nMarks INT,\r\nFOREIGN KEY Marks(StudentID) REFERENCES Students(StudentID)\r\n);\r\n\r\nINSERT INTO Departments(DepartmentID,DepartmentName) VALUES\r\n(1,\"Computer Science\"),\r\n(2,\"Mathematics\"),\r\n(3,\"Physics\");\r\nINSERT INTO Students(StudentID,Name,Age,Department) VALUES\r\n(1,\"Amit\",20,1),\r\n(2,\"Riya\",22,2),\r\n(3,\"Karan\",21,1),\r\n(4,\"Neha\",23,3),\r\n(5,\"Arjun\",20,2);\r\nINSERT INTO marks(MarksID,StudentID,Subject,Marks) VALUES\r\n(1,1,\"DBMS\",85),\r\n(2,1,\"AI\",90),\r\n(3,2,\"DBMS\",75),\r\n(4,2,\"AI\",80),\r\n(5,3,\"DBMS\",88),\r\n(6,4,\"AI\",92),\r\n(7,5,\"DBMS\",70);\r\n/* Retrieve all students along with their department names */\r\nSELECT name,DepartmentName from students,departments where students.department - departments.DepartmentID;\r\n/* Find the average marks obtained by each student. */\r\nSELECT AVG(m.marks) \"AVG_MARKS\",s.name FROM students s JOIN marks m on m.StudentID = s.StudentID GROUP BY s.StudentID;\r\n/* Find the maximum marks in each subject */\r\nSELECT m.Subject,max(m.marks) from Marks m GROUP BY m.Subject;\r\n/* List students who scored more than 80 in all subject */\r\nSELECT s.name from students s JOIN marks m ON s.StudentID = m.StudentID GROUP BY m.StudentID having MIN(m.marks) >= 80;\r\n/* Retrieve all students ordered by their average marks in descending order. */\r\nSELECT s.name,AVG(m.marks) as \"AVG_MARKS\" FROM students s LEFT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID ORDER BY AVG_MARKS DESC;\r\n/* Find the total marks scored by students in each department. */\r\nSELECT d.DepartmentName,sum(m.marks) as TOTAL FROM Marks m JOIN Students s ON m.StudentID = s.StudentID JOIN Departments d ON s.Department = d.DepartmentID GROUP BY d.DepartmentID;\r\n/* Display students who have not received any marks yet. */\r\nSELECT s.name FROM students s WHERE s.StudentID not in ( SELECT StudentID from students );\r\n/* Retrieve department names along with the number of students enrolled in each\r\ndepartment. */\r\nSELECT d.DepartmentName, count(*) as NUM_OF_STUDENTS FROM departments d JOIN students s ON d.DepartmentID = s.Department GROUP BY d.DepartmentID;\r\n/* . Find the student with the highest marks in AI subject. */\r\nSELECT Subject,max(Marks) FROM Marks WHERE Subject = \"AI\"  GROUP BY Subject;\r\n/* Display all students along with their average marks (if any), showing 0 where marks are\r\nnot available. */\r\nSELECT s.name,COALESCE(AVG(m.marks),0) as AVG FROM students s RIGHT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID;\r\n",
     "options": {},
     "viewState": {
         "cursorState": [
             {
                 "inSelectionMode": false,
                 "selectionStart": {
-                    "lineNumber": 63,
-                    "column": 1
+                    "lineNumber": 53,
+                    "column": 181
                 },
                 "position": {
-                    "lineNumber": 63,
-                    "column": 1
+                    "lineNumber": 53,
+                    "column": 181
                 }
             }
         ],
         "viewState": {
-            "scrollLeft": 0,
+            "scrollLeft": 125,
             "firstPosition": {
-                "lineNumber": 55,
+                "lineNumber": 50,
                 "column": 1
             },
-            "firstPositionDeltaTop": 4
+            "firstPositionDeltaTop": 120
         },
         "contributionsState": {
             "editor.contrib.folding": {},
@@ -35,7 +35,7 @@
         {
             "state": {
                 "start": 1,
-                "end": 1,
+                "end": 2,
                 "language": "mysql",
                 "result": {
                     "type": "text",
@@ -43,8 +43,14 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "73a6b4d8-4a29-438b-90b0-04126cb8b29e",
-                            "content": "OK, 0 records retrieved in 0.441ms"
+                            "resultId": "30f09357-4dcf-4c87-bd9c-f86d2b1c4d47",
+                            "content": "OK, 1 row affected in 5.466ms"
+                        },
+                        {
+                            "type": 2,
+                            "index": 1,
+                            "resultId": "445cff7e-5d4c-479f-f834-0c77e0397eb8",
+                            "content": "OK, 0 records retrieved in 0.717ms"
                         }
                     ]
                 },
@@ -55,10 +61,19 @@
                         "delimiter": ";",
                         "span": {
                             "start": 0,
-                            "length": 14
+                            "length": 40
                         },
                         "contentStart": 0,
                         "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 40,
+                            "length": 14
+                        },
+                        "contentStart": 41,
+                        "state": 3
                     }
                 ]
             },
@@ -66,13 +81,13 @@
         },
         {
             "state": {
-                "start": 2,
-                "end": 2,
+                "start": 3,
+                "end": 3,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "df8b25c8-99f9-4dd0-b19e-19f888d122a2"
+                        "4588d5da-c1bb-4d2e-be87-5a1416b37873"
                     ]
                 },
                 "currentHeight": 36,
@@ -91,8 +106,8 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "df8b25c8-99f9-4dd0-b19e-19f888d122a2",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "4588d5da-c1bb-4d2e-be87-5a1416b37873",
                     "rows": [
                         {
                             "0": "departments"
@@ -141,8 +156,8 @@
         },
         {
             "state": {
-                "start": 3,
-                "end": 6,
+                "start": 4,
+                "end": 7,
                 "language": "mysql",
                 "result": {
                     "type": "text",
@@ -150,8 +165,8 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "5cc6d2bf-7136-4904-f680-18868b82d085",
-                            "content": "OK, 0 records retrieved in 5.383ms"
+                            "resultId": "f6ba2620-98e8-4f9c-d9a9-127ddd366fa5",
+                            "content": "OK, 0 records retrieved in 19.967ms"
                         }
                     ]
                 },
@@ -173,8 +188,8 @@
         },
         {
             "state": {
-                "start": 7,
-                "end": 14,
+                "start": 8,
+                "end": 15,
                 "language": "mysql",
                 "result": {
                     "type": "text",
@@ -182,8 +197,8 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "0582f205-e1bd-4aef-e9a4-0390f2f64243",
-                            "content": "OK, 0 records retrieved in 2.415ms"
+                            "resultId": "d48dda88-3e29-4e69-b3fc-a608708fe715",
+                            "content": "OK, 0 records retrieved in 55.385ms"
                         }
                     ]
                 },
@@ -205,8 +220,8 @@
         },
         {
             "state": {
-                "start": 15,
-                "end": 22,
+                "start": 16,
+                "end": 23,
                 "language": "mysql",
                 "result": {
                     "type": "text",
@@ -214,8 +229,8 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "34f2cc86-788a-4962-cb73-454f124f3915",
-                            "content": "OK, 0 records retrieved in 2.058ms"
+                            "resultId": "cb6970c0-0e14-4e1a-c9ec-f92168fa9ba1",
+                            "content": "OK, 0 records retrieved in 47.525ms"
                         }
                     ]
                 },
@@ -237,22 +252,19 @@
         },
         {
             "state": {
-                "start": 23,
-                "end": 26,
+                "start": 24,
+                "end": 27,
                 "language": "mysql",
                 "result": {
                     "type": "text",
                     "text": [
                         {
-                            "type": 0,
+                            "type": 2,
                             "index": 0,
-                            "content": "MySQL Error (1062): Duplicate entry '1' for key 'departments.PRIMARY'",
-                            "language": "ansi"
+                            "resultId": "ef21022b-96d0-4867-a884-807a8acb861b",
+                            "content": "OK, 3 rows affected in 7.291ms"
                         }
-                    ],
-                    "executionInfo": {
-                        "text": ""
-                    }
+                    ]
                 },
                 "currentHeight": 28,
                 "currentSet": 1,
@@ -272,8 +284,8 @@
         },
         {
             "state": {
-                "start": 27,
-                "end": 32,
+                "start": 28,
+                "end": 33,
                 "language": "mysql",
                 "result": {
                     "type": "text",
@@ -281,8 +293,8 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "486acf44-da41-475b-e8af-8ef2a80e486d",
-                            "content": "OK, 5 rows affected in 5.882ms"
+                            "resultId": "e2e25a95-d92b-439b-ba11-80755bcff7e1",
+                            "content": "OK, 5 rows affected in 4.37ms"
                         }
                     ]
                 },
@@ -304,8 +316,8 @@
         },
         {
             "state": {
-                "start": 33,
-                "end": 40,
+                "start": 34,
+                "end": 41,
                 "language": "mysql",
                 "result": {
                     "type": "text",
@@ -313,8 +325,8 @@
                         {
                             "type": 2,
                             "index": 0,
-                            "resultId": "287e9eff-4e80-4a82-836f-69426db85995",
-                            "content": "OK, 7 rows affected in 3.427ms"
+                            "resultId": "c6e8c085-d213-4abf-93bc-40223a8f30fe",
+                            "content": "OK, 7 rows affected in 3.484ms"
                         }
                     ]
                 },
@@ -336,13 +348,13 @@
         },
         {
             "state": {
-                "start": 41,
-                "end": 42,
+                "start": 42,
+                "end": 43,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "ba2f9267-cddf-4786-cde3-cc0c1886b125"
+                        "c9c937fb-46d5-429f-d92e-e4fc56ef7d57"
                     ]
                 },
                 "currentHeight": 36,
@@ -361,8 +373,8 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "ba2f9267-cddf-4786-cde3-cc0c1886b125",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "c9c937fb-46d5-429f-d92e-e4fc56ef7d57",
                     "rows": [
                         {
                             "0": "Amit",
@@ -444,7 +456,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 10 records retrieved in 1.6ms"
+                        "text": "OK, 10 records retrieved in 2.215ms"
                     },
                     "totalRowCount": 10,
                     "hasMoreRows": false,
@@ -458,13 +470,13 @@
         },
         {
             "state": {
-                "start": 43,
-                "end": 44,
+                "start": 44,
+                "end": 45,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "2c0c66b8-a2f9-49ed-c270-72c08d94c7a2"
+                        "107dd732-10ae-42fa-990c-239d32d1a2a5"
                     ]
                 },
                 "currentHeight": 36,
@@ -483,8 +495,8 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "2c0c66b8-a2f9-49ed-c270-72c08d94c7a2",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "107dd732-10ae-42fa-990c-239d32d1a2a5",
                     "rows": [
                         {
                             "0": "87.5000",
@@ -550,7 +562,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 5 records retrieved in 1.027ms"
+                        "text": "OK, 5 records retrieved in 1.563ms"
                     },
                     "totalRowCount": 5,
                     "hasMoreRows": false,
@@ -564,13 +576,13 @@
         },
         {
             "state": {
-                "start": 45,
-                "end": 46,
+                "start": 46,
+                "end": 47,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "df7e8b68-cc49-45d2-cbf9-c6af59c3b7f8"
+                        "ad11342b-47f3-480d-ff1b-b8afb195ee7f"
                     ]
                 },
                 "currentHeight": 36,
@@ -589,8 +601,8 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "df7e8b68-cc49-45d2-cbf9-c6af59c3b7f8",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "ad11342b-47f3-480d-ff1b-b8afb195ee7f",
                     "rows": [
                         {
                             "0": "DBMS",
@@ -642,7 +654,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 2 records retrieved in 0.856ms"
+                        "text": "OK, 2 records retrieved in 2.1ms"
                     },
                     "totalRowCount": 2,
                     "hasMoreRows": false,
@@ -656,16 +668,16 @@
         },
         {
             "state": {
-                "start": 47,
-                "end": 48,
+                "start": 48,
+                "end": 49,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "476aa107-14e3-4ac1-bd20-be462746a1ea"
+                        "284f80d5-5b02-4ee4-8050-a9bdef19f5fa"
                     ]
                 },
-                "currentHeight": 36,
+                "currentHeight": 138.390625,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -681,8 +693,8 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "476aa107-14e3-4ac1-bd20-be462746a1ea",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "284f80d5-5b02-4ee4-8050-a9bdef19f5fa",
                     "rows": [
                         {
                             "0": "Amit"
@@ -715,7 +727,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 3 records retrieved in 0.99ms"
+                        "text": "OK, 3 records retrieved in 1.037ms"
                     },
                     "totalRowCount": 3,
                     "hasMoreRows": false,
@@ -729,23 +741,23 @@
         },
         {
             "state": {
-                "start": 49,
-                "end": 50,
+                "start": 50,
+                "end": 51,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "18d85561-425e-4a88-de63-c3d6ea183ded"
+                        "fcf74eb5-d60e-4c03-e007-4cfcc4d535dd"
                     ]
                 },
-                "currentHeight": 36,
+                "currentHeight": 186,
                 "currentSet": 1,
                 "statements": [
                     {
                         "delimiter": ";",
                         "span": {
                             "start": 0,
-                            "length": 225
+                            "length": 230
                         },
                         "contentStart": 80,
                         "state": 3
@@ -754,28 +766,28 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "18d85561-425e-4a88-de63-c3d6ea183ded",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "fcf74eb5-d60e-4c03-e007-4cfcc4d535dd",
                     "rows": [
                         {
-                            "0": "Arjun",
-                            "1": "70.0000"
-                        },
-                        {
-                            "0": "Riya",
-                            "1": "77.5000"
-                        },
-                        {
-                            "0": "Amit",
-                            "1": "87.5000"
+                            "0": "Neha",
+                            "1": "92.0000"
                         },
                         {
                             "0": "Karan",
                             "1": "88.0000"
                         },
                         {
-                            "0": "Neha",
-                            "1": "92.0000"
+                            "0": "Amit",
+                            "1": "87.5000"
+                        },
+                        {
+                            "0": "Riya",
+                            "1": "77.5000"
+                        },
+                        {
+                            "0": "Arjun",
+                            "1": "70.0000"
                         }
                     ],
                     "columns": [
@@ -821,13 +833,13 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 5 records retrieved in 1.583ms"
+                        "text": "OK, 5 records retrieved in 1.005ms"
                     },
                     "totalRowCount": 5,
                     "hasMoreRows": false,
                     "currentPage": 0,
                     "index": 0,
-                    "sql": "/* Retrieve all students ordered by their average marks in descending order. */\nSELECT s.name,AVG(m.marks) as \"AVG_MARKS\" FROM students s LEFT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID ORDER BY AVG_MARKS;",
+                    "sql": "/* Retrieve all students ordered by their average marks in descending order. */\nSELECT s.name,AVG(m.marks) as \"AVG_MARKS\" FROM students s LEFT JOIN marks m ON s.StudentID = m.StudentID GROUP BY s.StudentID ORDER BY AVG_MARKS DESC;",
                     "updatable": false,
                     "fullTableName": ""
                 }
@@ -835,16 +847,16 @@
         },
         {
             "state": {
-                "start": 51,
-                "end": 52,
+                "start": 52,
+                "end": 53,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "9b79e7c8-6118-4d23-90ea-69061e231ff3"
+                        "f8cabfd0-efc2-435f-f4e3-5cb00f5cd587"
                     ]
                 },
-                "currentHeight": 36,
+                "currentHeight": 138.390625,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -860,8 +872,8 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "9b79e7c8-6118-4d23-90ea-69061e231ff3",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "f8cabfd0-efc2-435f-f4e3-5cb00f5cd587",
                     "rows": [
                         {
                             "0": "Computer Science",
@@ -919,7 +931,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 3 records retrieved in 0.778ms"
+                        "text": "OK, 3 records retrieved in 2.163ms"
                     },
                     "totalRowCount": 3,
                     "hasMoreRows": false,
@@ -933,13 +945,13 @@
         },
         {
             "state": {
-                "start": 53,
-                "end": 54,
+                "start": 54,
+                "end": 55,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "531e01b9-8588-4646-b187-e0886368b8e3"
+                        "749abecb-3552-477e-80de-1d31e6758c76"
                     ]
                 },
                 "currentHeight": 76.796875,
@@ -958,11 +970,11 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "531e01b9-8588-4646-b187-e0886368b8e3",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "749abecb-3552-477e-80de-1d31e6758c76",
                     "rows": [],
                     "executionInfo": {
-                        "text": "OK, 0 records retrieved in 1.951ms"
+                        "text": "OK, 0 records retrieved in 2.21ms"
                     },
                     "totalRowCount": 0,
                     "hasMoreRows": false,
@@ -976,16 +988,16 @@
         },
         {
             "state": {
-                "start": 55,
-                "end": 57,
+                "start": 56,
+                "end": 58,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "d8f7a868-1f40-4605-90fc-41c73d00d865"
+                        "43b86d3a-7865-4739-a583-7092a7a1f7ff"
                     ]
                 },
-                "currentHeight": 138.390625,
+                "currentHeight": 36,
                 "currentSet": 1,
                 "statements": [
                     {
@@ -1001,8 +1013,8 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "d8f7a868-1f40-4605-90fc-41c73d00d865",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "43b86d3a-7865-4739-a583-7092a7a1f7ff",
                     "rows": [
                         {
                             "0": "Computer Science",
@@ -1058,7 +1070,7 @@
                         }
                     ],
                     "executionInfo": {
-                        "text": "OK, 3 records retrieved in 1.107ms"
+                        "text": "OK, 3 records retrieved in 1.207ms"
                     },
                     "totalRowCount": 3,
                     "hasMoreRows": false,
@@ -1072,13 +1084,13 @@
         },
         {
             "state": {
-                "start": 58,
-                "end": 59,
+                "start": 59,
+                "end": 60,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "2d07c890-56bd-4cef-a184-a0b2982302f1"
+                        "6d9c7f3c-5eff-4757-a998-d53604051cdc"
                     ]
                 },
                 "currentHeight": 90.796875,
@@ -1097,8 +1109,8 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "2d07c890-56bd-4cef-a184-a0b2982302f1",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "6d9c7f3c-5eff-4757-a998-d53604051cdc",
                     "rows": [
                         {
                             "0": "AI",
@@ -1159,13 +1171,13 @@
         },
         {
             "state": {
-                "start": 60,
-                "end": 62,
+                "start": 61,
+                "end": 63,
                 "language": "mysql",
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "8314da35-097e-448c-9461-7002fd21c8e1"
+                        "8d068be7-69a0-49cb-9615-f4c552c87c0b"
                     ]
                 },
                 "currentHeight": 186,
@@ -1184,8 +1196,8 @@
             },
             "data": [
                 {
-                    "tabId": "04e53371-ec8a-4297-fc9c-5f6016a70ec9",
-                    "resultId": "8314da35-097e-448c-9461-7002fd21c8e1",
+                    "tabId": "1817e919-86c5-4cd2-db44-b38f7d8c8df2",
+                    "resultId": "8d068be7-69a0-49cb-9615-f4c552c87c0b",
                     "rows": [
                         {
                             "0": "Amit",
@@ -1265,8 +1277,8 @@
         },
         {
             "state": {
-                "start": 63,
-                "end": 63,
+                "start": 64,
+                "end": 64,
                 "language": "mysql",
                 "currentSet": 1,
                 "statements": [
